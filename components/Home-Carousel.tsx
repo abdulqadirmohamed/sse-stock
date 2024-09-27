@@ -27,7 +27,7 @@ const HomeCarousel = () => {
             >
                 {images.map((image, index) => (
                     <SwiperSlide key={index}>
-                        <div className="w-full h-[600px] relative bg-blue-300">
+                        <div className="w-full h-[600px] relative">
                             <Image
                                 src={image}
                                 alt={`Slide ${index + 1}`}

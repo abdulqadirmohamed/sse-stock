@@ -1,3 +1,4 @@
+import { ArrowDown, ArrowUp, ChartNoAxesCombined } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react'
 
@@ -10,7 +11,7 @@ const MarketSnapshot = () => {
             price: '$3.00',
             open: '$3.00',
             close: '$3.00',
-            change: '0.0',
+            change: 0,
             volume: '0',
             trade: 'Trade',
             logo: 'https://sse.so/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-12-at-12.09.19-PM-2-300x89.jpeg', // Replace with your image path
@@ -22,7 +23,7 @@ const MarketSnapshot = () => {
             price: '$5.00',
             open: '$5.00',
             close: '$5.00',
-            change: '0.0',
+            change: 5,
             volume: '0',
             trade: 'Trade',
             logo: 'https://sse.so/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-12-at-11.32.55-AM-3-300x81.jpeg',
@@ -65,10 +66,14 @@ const MarketSnapshot = () => {
                                 <td className="px-4 py-2">{stock.price}</td>
                                 <td className="px-4 py-2">{stock.open}</td>
                                 <td className="px-4 py-2">{stock.close}</td>
-                                <td className="px-4 py-2">{stock.change}</td>
+                                <td className="px-4 py-2 flex items-center gap-2 justify-center">
+                                    {stock.change}
+                                    {stock.change < 5 ? <ArrowDown size={20} className='text-red-600' />: <ArrowUp size={20} className='text-green-600' />}
+                                </td>
                                 <td className="px-4 py-2">{stock.volume}</td>
                                 <td className="px-4 py-2 text-center">
-                                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+                                    <button className="flex items-center gap-2 bg-blue-900 hover:bg-blue-800 text-white font-bold py-1 px-2 rounded">
+                                    <ChartNoAxesCombined size={20} />
                                         {stock.trade}
                                     </button>
                                 </td>
