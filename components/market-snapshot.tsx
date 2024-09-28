@@ -68,7 +68,7 @@ const MarketSnapshot = () => {
                                 <td className="px-4 py-2">{stock.close}</td>
                                 <td className="px-4 py-2 flex items-center gap-2 justify-center">
                                     {stock.change}
-                                    {stock.change < 5 ? <ArrowDown size={20} className='text-red-600' />: <ArrowUp size={20} className='text-green-600' />}
+                                    {stock.change < 5 ? <ArrowDown size={15} className='text-red-600' />: <ArrowUp size={15} className='text-green-600' />}
                                 </td>
                                 <td className="px-4 py-2">{stock.volume}</td>
                                 <td className="px-4 py-2 text-center">
