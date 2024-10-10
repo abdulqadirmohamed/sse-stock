@@ -2,7 +2,8 @@
 const nextConfig = {
     images: {
         domains: [
-            'sse.so'
+            'sse.so',
+            'localhost'
         ]
     }
 };
