@@ -45,8 +45,8 @@ const LatestInsights = () => {
                                 <Image
                                     src={post.featureImg}
                                     alt='post-image'
-                                    layout="fill"
-                                    objectFit="cover"
+                                    fill
+                                    style={{objectFit:"cover"}}
                                     quality={100} />
                             </div>
                             <div className='p-4 bg-white'>

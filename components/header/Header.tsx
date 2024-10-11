@@ -1,89 +1,61 @@
-import React from 'react'
-import {
-    Menubar,
-    MenubarContent,
-    MenubarItem,
-    MenubarMenu,
-    MenubarSeparator,
-    MenubarShortcut,
-    MenubarSub,
-    MenubarSubContent,
-    MenubarSubTrigger,
-    MenubarTrigger,
-} from "@/components/ui/menubar"
+'use client'
+import React, { useState } from 'react'
+
 import Image from 'next/image'
 import Link from 'next/link'
-const menuLinks = []
+import { menuList } from './Constant'
+import DesktopNav from './DesktopNav'
+import MobileNav from './MobileNav'
+
 
 
 const Header = () => {
-    return (
-        <div className='border-b py-6'>
-            <div className='container mx-auto flex items-center justify-between '>
-                <Link href={'/'}>
-                    <Image src={'https://sse.so/wp-content/uploads/2021/07/sselogonew.png'} alt='logo' width={100} height={50} />
-                </Link>
-                <Menubar>
-                    <MenubarMenu>
-                        <MenubarTrigger>
-                            <Link href={'about-us'}>About us</Link>
-                        </MenubarTrigger>
-                    </MenubarMenu>
-                    <MenubarMenu>
-                        <MenubarTrigger>Products and Services</MenubarTrigger>
-                        <MenubarContent>
-                            <MenubarItem>Shares</MenubarItem>
-                            <MenubarSeparator />
-                            <MenubarItem>Bonds/Sukuk</MenubarItem>
-                            <MenubarSeparator />
-                            <MenubarItem>commodities</MenubarItem>
-                        </MenubarContent>
-                    </MenubarMenu>
-                    <MenubarMenu>
-                        <MenubarTrigger>Listing</MenubarTrigger>
-                        <MenubarContent>
-                            <MenubarItem>Listed Companies</MenubarItem>
-                            <MenubarSeparator />
-                            <MenubarItem>Nominated</MenubarItem>
-                            <MenubarSeparator />
-                            <MenubarItem>Membership</MenubarItem>
-                        </MenubarContent>
-                    </MenubarMenu>
-                    <MenubarMenu>
-                        <MenubarTrigger>Market Statistics</MenubarTrigger>
-                        <MenubarContent>
-                            <MenubarItem>Market Snapshot</MenubarItem>
-                            <MenubarSeparator />
-                            <MenubarItem>Market Data</MenubarItem>
-                        </MenubarContent>
-                    </MenubarMenu>
-                    <MenubarMenu>
-                        <MenubarTrigger>Media Centre</MenubarTrigger>
-                        <MenubarContent>
-                            <MenubarItem>News</MenubarItem>
-                            <MenubarSeparator />
-                            <MenubarSub>
-                                <MenubarSubTrigger>Publications</MenubarSubTrigger>
-                                <MenubarSubContent>
-                                    <MenubarItem>Reports</MenubarItem>
-                                    <MenubarSeparator />
-                                    <MenubarItem>Links</MenubarItem>
-                                </MenubarSubContent>
-                            </MenubarSub>
-                            <MenubarSeparator />
-                            <MenubarItem>Events</MenubarItem>
-                        </MenubarContent>
-                    </MenubarMenu>
-                </Menubar>
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [openSubMenus, setOpenSubMenus] = useState<number[]>([]); // To track open sub-menus
 
-                <div>
-                    <Link href={'#'}>
-                    Social media
-                    </Link>
-                    
-                </div>
+    // Toggle mobile menu
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
+
+    // Toggle submenu (clickable label and arrow)
+    const toggleSubMenu = (index: number) => {
+        if (openSubMenus.includes(index)) {
+            setOpenSubMenus(openSubMenus.filter((i) => i !== index)); // Close if already open
+        } else {
+            setOpenSubMenus([...openSubMenus, index]); // Open submenu
+        }
+    };
+
+    // Close mobile menu after clicking a submenu link
+    const handleCloseMenu = () => {
+        setIsMobileMenuOpen(false); // Close the entire mobile menu
+    };
+    return (
+        <div className="border-b py-6">
+        <div className="container mx-auto flex items-center justify-between md:px-0 px-10">
+            {/* Logo */}
+            <Link href={'/'}>
+                <Image
+                    src={'https://sse.so/wp-content/uploads/2021/07/sselogonew.png'}
+                    alt="logo"
+                    width={100}
+                    height={50}
+                />
+            </Link>
+
+            {/* Desktop Navigation */}
+            <DesktopNav menuList={menuList} />
+
+            {/* Mobile Navigation */}
+            <MobileNav menuList={menuList} />
+
+            {/* Social Media Link */}
+            <div className="hidden md:block">
+                <Link href={'#'}>Social media</Link>
             </div>
         </div>
+    </div>
     )
 }
 

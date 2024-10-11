@@ -1,7 +1,5 @@
 'use client'
-import { ChevronRight } from 'lucide-react'
 import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
 
 const MembershipOfSSE = () => {
@@ -29,7 +27,6 @@ const MembershipOfSSE = () => {
                             alt='Memebership of SSE'
                             width={200}
                             height={200}
-                            
                             quality={100} />
                     </div>
                 ))}

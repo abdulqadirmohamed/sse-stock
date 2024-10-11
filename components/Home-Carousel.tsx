@@ -7,7 +7,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import MarketSnapshot from './market-snapshot';
 const images = ['/images/hero-img-1.jpg', '/images/hero-img-2.jpg', '/images/hero-img-3.jpg'];
 
 
@@ -15,7 +14,7 @@ const images = ['/images/hero-img-1.jpg', '/images/hero-img-2.jpg', '/images/her
 const HomeCarousel = () => {
 
     return (
-        <div className="w-full">
+        <div className="w-full -z-50">
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={50}
@@ -32,8 +31,8 @@ const HomeCarousel = () => {
                                 src={image}
                                 alt={`Slide ${index + 1}`}
                                 className="object-cover object-center"
-                                layout="fill"
-                                objectFit="cover"
+                                fill
+                                style={{objectFit:"cover"}}
                                 quality={100}
 
                             />

@@ -38,36 +38,37 @@ const MarketSnapshot = async () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {marketData.map((stock: any) => (
-                            <tr key={stock.id} className="hover:bg-gray-100 border-b">
-                                <td className="px-4 py-2 flex items-center">
-                                    <Image
-                                        src={`http://localhost:1337${stock.logo.formats.thumbnail.url}`}
-                                        alt={stock.name}
-                                        width={50}
-                                        height={50}
-                                        className="mr-2"
-                                    />
-                                    {stock.security_name}
-                                </td>
-                                <td className="px-4 py-2">{stock.symbol}</td>
-                                <td className="px-4 py-2">{stock.market}</td>
-                                <td className="px-4 py-2">{stock.price}</td>
-                                <td className="px-4 py-2">{stock.open}</td>
-                                <td className="px-4 py-2">{stock.close}</td>
-                                <td className="px-4 py-2 flex items-center gap-2 justify-center">
-                                    {stock.change}
-                                    {stock.change < 5 ? <ArrowDown size={15} className='text-red-600' /> : <ArrowUp size={15} className='text-green-600' />}
-                                </td>
-                                <td className="px-4 py-2">{stock.volume}</td>
-                                <td className="px-4 py-2 text-center">
-                                    <button className="flex items-center gap-2 bg-blue-900 hover:bg-blue-800 text-white font-bold py-1 px-2 rounded">
-                                        <ChartNoAxesCombined size={20} />
-                                        {stock.trade}
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
+                        {marketData && marketData.length > 0 ? (
+                            marketData.map((stock: any) => (
+                                <tr key={stock.id} className="hover:bg-gray-100 border-b">
+                                    <td className="px-4 py-2 flex items-center">
+                                        <Image
+                                            src={`http://localhost:1337${stock.logo.formats.thumbnail.url}`}
+                                            alt={stock.name}
+                                            width={50}
+                                            height={50}
+                                            className="mr-2"
+                                        />
+                                        {stock.security_name}
+                                    </td>
+                                    <td className="px-4 py-2">{stock.symbol}</td>
+                                    <td className="px-4 py-2">{stock.market}</td>
+                                    <td className="px-4 py-2">{stock.price}</td>
+                                    <td className="px-4 py-2">{stock.open}</td>
+                                    <td className="px-4 py-2">{stock.close}</td>
+                                    <td className="px-4 py-2 flex items-center gap-2 justify-center">
+                                        {stock.change}
+                                        {stock.change < 5 ? <ArrowDown size={15} className='text-red-600' /> : <ArrowUp size={15} className='text-green-600' />}
+                                    </td>
+                                    <td className="px-4 py-2">{stock.volume}</td>
+                                    <td className="px-4 py-2 text-center">
+                                        <button className="flex items-center gap-2 bg-blue-900 hover:bg-blue-800 text-white font-bold py-1 px-2 rounded">
+                                            <ChartNoAxesCombined size={20} />
+                                            {stock.trade}
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))) : null}
                     </tbody>
                 </table>
             </div>

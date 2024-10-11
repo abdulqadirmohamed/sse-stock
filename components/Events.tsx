@@ -36,7 +36,7 @@ const Events = () => {
                         alt='post-image'
                         width={800}
                         height={400}
-                        objectFit="cover"
+                        style={{objectFit:"cover"}}
                         quality={100} />
                 </div>
                 {/* title */}

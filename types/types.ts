@@ -3,3 +3,9 @@ export type THeaderItems = {
     path: string
     subMenuItems?: THeaderItems[]
 }
+
+export interface MenuItem {
+    label: string;
+    href?: string;
+    subItems?: MenuItem[];
+}
