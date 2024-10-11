@@ -13,13 +13,13 @@ const LatestInsights = () => {
             date: '13 March 2024'
         },
         {
-            id: 1,
+            id: 2,
             featureImg: '/images/blog/img2.jpg',
             title: 'Fresh Del Monte Announces Banana Partnership in Somalia',
             date: '12 June 2024'
         },
         {
-            id: 1,
+            id: 3,
             featureImg: '/images/blog/img3.jpg',
             title: 'How FDIs can improve economic growth in Somalia',
             date: '24 April 2024'

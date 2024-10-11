@@ -18,6 +18,7 @@ export const menuList: MenuItem[] = [
             },
             {
                 label: 'Commodities',
+                href:'commodities'
             },
         ]
     },

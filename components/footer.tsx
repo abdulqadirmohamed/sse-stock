@@ -1,6 +1,9 @@
 import { Mail, MapPin, Phone, PhoneCall } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
+import { BsTwitterX } from 'react-icons/bs'
+import { FaFacebookF, FaLinkedin, FaYoutube } from 'react-icons/fa6'
+import { RiWhatsappFill } from 'react-icons/ri'
 
 const Footer = () => {
     return (
@@ -45,9 +48,13 @@ const Footer = () => {
                     </div>
                 </div>
                 <hr />
-                <div className='py-5 text-center'>
-                    Social media
-                </div>
+                <div className="flex justify-center items-center gap-3 text-blue-200 py-4">
+                <Link href={'#'}><FaFacebookF /></Link>
+                <Link href={'#'}><BsTwitterX /></Link>
+                <Link href={'#'}><FaLinkedin /></Link>
+                <Link href={'#'}><FaYoutube /></Link>
+                <Link href={'#'}><RiWhatsappFill /></Link>
+            </div>
             </div>
         </footer>
     )

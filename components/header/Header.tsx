@@ -6,6 +6,9 @@ import Link from 'next/link'
 import { menuList } from './Constant'
 import DesktopNav from './DesktopNav'
 import MobileNav from './MobileNav'
+import { FaFacebookF, FaLinkedin, FaXTwitter, FaYoutube } from 'react-icons/fa6'
+import { BsTwitterX } from 'react-icons/bs'
+import { RiWhatsappFill } from 'react-icons/ri'
 
 
 
@@ -51,8 +54,12 @@ const Header = () => {
             <MobileNav menuList={menuList} />
 
             {/* Social Media Link */}
-            <div className="hidden md:block">
-                <Link href={'#'}>Social media</Link>
+            <div className="hidden md:flex items-center gap-3 text-blue-900">
+                <Link href={'#'}><FaFacebookF /></Link>
+                <Link href={'#'}><BsTwitterX /></Link>
+                <Link href={'#'}><FaLinkedin /></Link>
+                <Link href={'#'}><FaYoutube /></Link>
+                <Link href={'#'}><RiWhatsappFill /></Link>
             </div>
         </div>
     </div>
