@@ -32,6 +32,7 @@ const HomeCarousel = () => {
                                 alt={`Slide ${index + 1}`}
                                 className="object-cover object-center"
                                 fill
+                                priority
                                 style={{objectFit:"cover"}}
                                 quality={100}
 

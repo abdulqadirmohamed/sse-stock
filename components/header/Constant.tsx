@@ -27,7 +27,7 @@ export const menuList: MenuItem[] = [
         subItems: [
             {
                 label: 'Listed Companies',
-                href: 'list-companies'
+                href: 'listed-companies'
             },
             {
                 label: 'Nominated',

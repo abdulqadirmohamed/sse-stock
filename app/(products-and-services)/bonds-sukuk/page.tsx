@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
-import styles from './about.module.css'
+import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 const page = () => {
   return (
@@ -40,7 +41,7 @@ const page = () => {
               <h3 className='text-xl font-bold text-gray-800 my-5'>Government Bonds</h3>
               <p className="my-5">Government entities issue Bonds and list them on the debt market in order to raise funds for large capital projects such as roads, power stations and hospitals. It’s a great way for investors and banks to buy the paper to enhance returns on their portfolios.</p>
               <p className="my-5">Anyone can invest in government bonds. The listed debt market is predominately a wholesale market with large investors taking positions in bonds to satisfy portfolio needs, but this option also caters for the smaller investor.</p>
-              <p className="my-5">Contact us to find out more about bonds.</p>
+              <Link href={"contact-us"} className='bg-blue-900 px-3 py-2 rounded-md text-white flex items-center justify-center hover:animate-pulse'>Contact us to find out more about livestock <ArrowRight className='ml-3' /></Link>
             </div>
 
           </div>

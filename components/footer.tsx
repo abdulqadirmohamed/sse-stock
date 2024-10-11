@@ -28,7 +28,7 @@ const Footer = () => {
                             <p>info@sse.so</p>
                         </div>
                         <div className='flex items-center gap-4 my-3'>
-                            <MapPin />
+                            <MapPin size={30}/>
                             <p>SSE House, 21st Oct Road, Waberi P.O.Box 40001, Mogadishu, Somalia</p>
                         </div>
                     </div>
@@ -48,7 +48,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <hr />
-                <div className="flex justify-center items-center gap-3 text-blue-200 py-4">
+                <div className="flex justify-center items-center gap-3 text-blue-100 py-4">
                 <Link href={'#'}><FaFacebookF /></Link>
                 <Link href={'#'}><BsTwitterX /></Link>
                 <Link href={'#'}><FaLinkedin /></Link>

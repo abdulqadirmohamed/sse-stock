@@ -1,6 +1,12 @@
 import Image from 'next/image'
 import React from 'react'
 import styles from './about.module.css'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'SSE | About',
+  description: '...',
+}
 
 const page = () => {
   return (

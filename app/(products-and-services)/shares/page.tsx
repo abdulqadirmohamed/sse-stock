@@ -1,6 +1,7 @@
+import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
-import styles from './about.module.css'
 
 const page = () => {
   return (
@@ -11,6 +12,7 @@ const page = () => {
           alt='about-image'
           className="object-cover object-center"
           fill
+          priority
           style={{objectFit:"cover"}}
           quality={100}
         />
@@ -34,9 +36,7 @@ const page = () => {
             As with all investment products, the stock market comes with risks. Share prices can rise and fall and all investors should be aware that values may fluctuate during the year.
             </p>
 
-            <p className="my-5">
-            Contact us for further information about stocks and shares.
-            </p>
+            <Link href={"contact-us"} className='bg-blue-900 px-3 py-2 rounded-md text-white flex items-center justify-center hover:animate-pulse'>Contact us to find out more about livestock <ArrowRight className='ml-3' /></Link>
           </div>
         </div>
       </div>

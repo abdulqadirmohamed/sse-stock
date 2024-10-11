@@ -46,6 +46,7 @@ const LatestInsights = () => {
                                     src={post.featureImg}
                                     alt='post-image'
                                     fill
+                                    priority 
                                     style={{objectFit:"cover"}}
                                     quality={100} />
                             </div>

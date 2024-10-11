@@ -1,6 +1,5 @@
-// 'use client'
-import { ArrowDown, ArrowUp, ChartNoAxesCombined } from 'lucide-react';
-import Image from 'next/image';
+import { ArrowDown, ArrowUp, ChartNoAxesCombined } from 'lucide-react'
+import Image from 'next/image'
 import React from 'react'
 
 const gellMarketSnapshot = async () => {
@@ -17,12 +16,27 @@ const gellMarketSnapshot = async () => {
 
     }
 }
-const MarketSnapshot = async () => {
+
+const page = async() => {
     const marketData = await gellMarketSnapshot()
-    return (
-        <div className="container mx-auto my-4 px-6">
-            <h1 className='text-center my-6 text-xl font-bold'>Market Snapshot</h1>
-            <div className='overflow-x-auto overflow-y-scroll scrollbar'>
+  return (
+    <div className="">
+      <div className='md:h-[500px] h-[200px] relative -z-50 border-b-8 border-blue-900'>
+        <Image
+          src={'/images/hero-img-1.jpg'}
+          alt='about-image'
+          className="object-cover object-center"
+          fill
+          priority
+          style={{objectFit:"cover"}}
+          quality={100}
+        />
+      </div>
+      <div className='lg:grid grid-cols-5 md:mt-[-400px] z-50'>
+        <div className='lg:block md:col-span-2 hidden'></div>
+        <div className="bg-white lg:shadow-xl lg:p-20 p-10 lg:col-span-3">
+          <h1 className='text-2xl md:text-left sm:text-center font-bold mb-6 uppercase'>Market Snapshot</h1>
+          <div className='overflow-x-auto overflow-y-scroll scrollbar'>
                 <table className="min-w-full table-auto border-collapse border text-left text-sm ">
                     <thead className='border-b'>
                         <tr>
@@ -61,7 +75,7 @@ const MarketSnapshot = async () => {
                                         {stock.change < 5 ? <ArrowDown size={15} className='text-red-600' /> : <ArrowUp size={15} className='text-green-600' />}
                                     </td>
                                     <td className="px-4 py-2 border-r">{stock.volume}</td>
-                                    <td className="px-4 py-2 border-r flex justify-center items-center">
+                                    <td className="px-4 py-2 border-r flex justify-center">
                                         <button className="flex items-center border-r gap-2 bg-blue-900 hover:bg-blue-800 text-white  py-1 px-4 rounded capitalize">
                                             <ChartNoAxesCombined size={20} />
                                             trade
@@ -73,7 +87,9 @@ const MarketSnapshot = async () => {
                 </table>
             </div>
         </div>
-    )
+      </div>
+    </div>
+  )
 }
 
-export default MarketSnapshot
+export default page
