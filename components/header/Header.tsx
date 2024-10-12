@@ -55,7 +55,7 @@ const Header = () => {
             <MobileNav menuList={menuList} />
 
             {/* Social Media Link */}
-            <div className="hidden md:flex items-center gap-3 text-blue-900">
+            <div className="hidden lg:flex items-center gap-3 text-blue-900">
                 <Link href={'#'}><FaFacebookF /></Link>
                 <Link href={'#'}><BsTwitterX /></Link>
                 <Link href={'#'}><FaLinkedin /></Link>

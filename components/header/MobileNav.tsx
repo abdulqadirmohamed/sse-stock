@@ -94,7 +94,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ menuList }) => {
                             )}
                         </div>
                         {menuItem.subItems && openSubMenus.includes(index) && (
-                            <div className="pl-4 transition-all duration-300 ease-in-out">
+                            <div className="pl-4 transition-all duration-900 ease-in-out">
                                 {menuItem.subItems.map((subItem, subIndex) => (
                                     <div key={subIndex}>
                                         <p className="py-2">

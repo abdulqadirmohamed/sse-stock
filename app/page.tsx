@@ -1,5 +1,6 @@
 
 import Events from "@/components/Events";
+import Faq from "@/components/Faq";
 import Header from "@/components/header/Header";
 import HomeCarousel from "@/components/Home-Carousel";
 import LatestInsights from "@/components/latest-insights";
@@ -17,6 +18,7 @@ export default function Home() {
         <Events />
         <Latestideos/>
         <MembershipOfSSE/>
+        <Faq/>
     </main>
   );
 }
