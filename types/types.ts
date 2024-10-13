@@ -9,3 +9,23 @@ export interface MenuItem {
     href?: string;
     subItems?: MenuItem[];
 }
+
+export type TMarket = {
+    id: string;
+    security_name: string;
+    symbol: string;
+    market: number;
+    price: number;
+    open: number;
+    close: number;
+    change: number;
+    volume: number;
+    logo?: {
+        formats?: {
+            thumbnail?: {
+                url: string;
+            };
+            // Add other formats if needed
+        };
+    };
+};

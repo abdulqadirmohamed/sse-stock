@@ -6,21 +6,25 @@ import React, { useState } from 'react'
 
 const videos = [
   {
+    id: 1,
     title: "Ring The Bell for Gender Equality",
     duration: "0:17",
     url: "https://www.youtube.com/embed/EHGDW_X8O2I"
   },
   {
+    id: 2,
     title: "Hassan Dudde, CEO Somali Stock Exchange",
     duration: "7:17",
     url: "https://www.youtube.com/embed/BrolJ-fZAJU"
   },
   {
+    id: 3,
     title: "Somali Stock Exchange Explained",
     duration: "29:41",
     url: "https://www.youtube.com/embed/rNGaCx_k74Y"
   },
   {
+    id: 4,
     title: "The Arab Federation of Exchanges",
     duration: "1:05",
     url: "https://www.youtube.com/embed/SqBS0bUsXH8"
@@ -29,7 +33,7 @@ const videos = [
 
 const Latestideos = () => {
 
-  const [selectedVideo, setSelectedVideo] = React.useState(videos[0]);
+  const [selectedVideo, setSelectedVideo] = useState(videos[0]);
 
   const handleVideoClick = (video: any) => {
     // Add autoplay=1 to the video URL for autoplay functionality
@@ -68,9 +72,9 @@ const Latestideos = () => {
             <p>{videos.length} Videos</p>
           </div>
           <ul className='mt-4'>
-            {videos.map((video, index) => (
+            {videos.map((video) => (
               <li
-                key={index}
+                key={video.id}
                 onClick={() => handleVideoClick(video)}
                 className={`cursor-pointer p-2 mb-2 flex justify-between items-center ${selectedVideo.title === video.title
                   ? 'bg-blue-200'

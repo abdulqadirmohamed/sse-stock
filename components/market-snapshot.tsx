@@ -1,10 +1,10 @@
 // 'use client'
+import { TMarket } from '@/types/types';
 import { ArrowDown, ArrowUp, ChartNoAxesCombined } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react'
 
-const gellMarketSnapshot = async () => {
-
+const gellMarketSnapshot = async (): Promise<TMarket[] | null>  => {
     try {
         const res = await fetch('http://localhost:1337/api/stocks?populate=*', {
             cache: 'no-store'
@@ -14,8 +14,9 @@ const gellMarketSnapshot = async () => {
             return market.data;
         }
     } catch (error) {
-
+            console.log(error)
     }
+    return null
 }
 const MarketSnapshot = async () => {
     const marketData = await gellMarketSnapshot()
@@ -39,12 +40,12 @@ const MarketSnapshot = async () => {
                     </thead>
                     <tbody >
                         {marketData && marketData.length > 0 ? (
-                            marketData.map((stock: any) => (
+                            marketData.map((stock: TMarket) => (
                                 <tr key={stock.id} className="hover:bg-gray-100 border-b">
                                     <td className="px-4 py-2 flex items-center border-r">
                                         <Image
-                                            src={`http://localhost:1337${stock.logo.formats.thumbnail.url}`}
-                                            alt={stock.name}
+                                            src={`http://localhost:1337${stock.logo?.formats?.thumbnail?.url}`}
+                                            alt={stock.security_name}
                                             width={50}
                                             height={50}
                                             className="mr-2"

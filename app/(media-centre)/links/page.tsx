@@ -1,4 +1,5 @@
-import { ArrowRight, ExternalLink } from 'lucide-react'
+/* eslint-disable react/jsx-key */
+import { ExternalLink } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -69,8 +70,8 @@ const page = () => {
                         <table className='min-w-full table-auto border-collapse border text-left text-sm '>
                             <tbody>
                                 {links.map((list) => (
-                                    <tr>
-                                        <td className="px-3 py-2 border-b flex items-center gap-4 group" key={list.id}>
+                                    <tr key={list.id}>
+                                        <td className="px-3 py-2 border-b flex items-center gap-4 group">
                                             <ExternalLink size={15} className='group-hover:text-blue-800'/>
                                             <Link href={list.href} target="_blank" className='text-blue-800 group-hover:underline'>{list.title}</Link>
                                         </td>
