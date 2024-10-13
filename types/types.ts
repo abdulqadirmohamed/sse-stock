@@ -29,3 +29,19 @@ export type TMarket = {
         };
     };
 };
+
+
+export type TBlog = {
+    id: number
+    title: string
+    slug: string
+    description: string
+    createdAt: string
+    cover?: {
+        formats?: {
+            thumbnail?: {
+                url: string;
+            };
+        };
+    };
+}
