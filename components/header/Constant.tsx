@@ -30,8 +30,8 @@ export const menuList: MenuItem[] = [
                 href: 'listed-companies'
             },
             {
-                label: 'Nominated',
-                href: 'nominated'
+                label: 'Nominated Advisers',
+                href: 'nominated-advisers'
             },
             {
                 label: 'Membership',

@@ -19,7 +19,7 @@ const page = () => {
       <div className='lg:grid grid-cols-5 md:mt-[-400px] z-50'>
         {/* Col 1 */}
         <div className="bg-white lg:shadow-xl lg:p-20 p-10 lg:col-span-3">
-          <h1 className='text-2xl md:text-left sm:text-center font-bold mb-6 uppercase'>Shares</h1>
+          <h1 className='text-2xl md:text-left sm:text-center font-bold mb-6 uppercase'>Bonds (Sukuk)</h1>
           <div className='md:text-[18px] text-gray-600'>
             <p>A bond is a debt instrument, used to lower your risk or to diversify your portfolio. Both Government Bonds and Corporate Bonds will be listed on the Somali Stock Exchange.</p>
             <div>
