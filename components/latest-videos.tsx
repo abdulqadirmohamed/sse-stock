@@ -37,7 +37,7 @@ const Latestideos = () => {
 
   const handleVideoClick = (video: any) => {
     // Add autoplay=1 to the video URL for autoplay functionality
-    const autoplayUrl = `${video.url}?autoplay=1`;
+    const autoplayUrl = `${video?.url}?autoplay=1`;
     setSelectedVideo({ ...video, url: autoplayUrl });
   };
   return (
@@ -52,7 +52,7 @@ const Latestideos = () => {
       </div>
       <span className='w-full h-[2px] bg-blue-900 block my-2'></span>
 
-      <div className="flex flex-col md:flex-row items-start justify-center p-8">
+      <div className="flex flex-col md:flex-row items-start justify-center my-2">
         {/* Video Player */}
         <div className="w-full md:w-3/4">
           <iframe
