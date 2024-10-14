@@ -1,31 +1,29 @@
 import React from 'react'
+import qs from "qs"
 
-const getPost = async (slug: string) => {
-  try {
-    const res = await fetch(`http://localhost:1337/api/blogs?filters[slug][$eq]=${slug}&populate=*`, {
-      cache: 'no-store'
-    })
-    if (res.ok) {
-      const post = await res.json()
-      return post
-    }
-  } catch (error) {
-    console.log(error)
-  }
+async function fetchPosts(slug:string) {
+  const ourQuery = qs.stringify({
+    filters: {
+      slug: slug
+    },
+   
+  })
+
+
+  const postsPromise = await fetch(`http://localhost:1337/api/blogs?${ourQuery}`)
+  const post = await postsPromise.json()
+  return post.data[0]
 }
 
-const page = async ({ params }: { params: { slug: string } }) =>{
-  const { slug } = params;
-  const post = await getPost(slug);
-  console.log(post)
+const page = async({params}:{params: {slug:string}}) => {
+  const post = await fetchPosts(params.slug)
 
-  // if (!post) {
-  //   return <p>Post not found</p>;
-  // }
   return (
-    <div className='container mx-auto'>
-       <h1 className='font-bold text-2xl'>title: {post.title}</h1>
-    </div>
+    <div>
+      {post.title}
+    
+      <p>{post.createdBy}</p>
+      </div>
   )
 }
 

@@ -97,7 +97,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ menuList }) => {
                             <div className="pl-4 transition-all duration-900 ease-in-out">
                                 {menuItem.subItems.map((subItem, subIndex) => (
                                     <div key={subIndex}>
-                                        <p className="py-2">
+                                        <p className="py-1 mt-1">
                                             {subItem.href ? (
                                                 <Link href={subItem.href}>
                                                     <span onClick={handleCloseMenu}>
@@ -105,27 +105,27 @@ const MobileNav: React.FC<MobileNavProps> = ({ menuList }) => {
                                                     </span>
                                                 </Link>
                                             ) : (
-                                                subItem.label
-                                                // <div>
-                                                //      {subItem.subItems?.map(
-                                                //         (subSubItem, subSubIndex) => (
-                                                //             <div key={subSubIndex}>
-                                                //                 <p>
-                                                //                     {subSubItem.href ? (
-                                                //                         <Link
-                                                //                             href={subSubItem.href}
-                                                //                         >
-                                                //                             {subSubItem.label}
-                                                //                         </Link>
-                                                //                     ) : (
-                                                //                         subSubItem.label
-                                                //                     )}
-                                                //                 </p>
+                                                //subItem.label
+                                                <div>
+                                                     {subItem.subItems?.map(
+                                                        (subSubItem, subSubIndex) => (
+                                                            <div key={subSubIndex}>
+                                                                <p className='py-2'>
+                                                                    {subSubItem.href ? (
+                                                                        <Link
+                                                                            href={subSubItem.href}
+                                                                        >
+                                                                            {subSubItem.label}
+                                                                        </Link>
+                                                                    ) : (
+                                                                        subSubItem.label
+                                                                    )}
+                                                                </p>
                                                                 
-                                                //             </div>
-                                                //         )
-                                                //     )}
-                                                // </div>
+                                                            </div>
+                                                        )
+                                                    )}
+                                                </div>
                                             )}
                                         </p>
                                     </div>
