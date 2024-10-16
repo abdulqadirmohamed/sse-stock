@@ -39,9 +39,10 @@ const LatestInsights = async ()  => {
                 {posts && posts.length > 0 ? (
                     posts.map((post:TBlog) => (
                         <Link href={`news/${post.slug}`} className='shadow group' key={post.id}>
-                            <div className='w-full h-64 relative'>
+                            <div className='w-full h-64 relative overflow-hidden'>
                                 <Image
-                                    src={`http://localhost:1337${post.cover?.formats?.thumbnail?.url}`}
+                                className='group-hover:scale-125 transition-all duration-300 ease-in-out'
+                                    src={`http://localhost:1337${post.cover?.formats?.large?.url}`}
                                     alt='post-image'
                                     fill
                                     priority 
@@ -50,7 +51,7 @@ const LatestInsights = async ()  => {
                             </div>
                             <div className='p-4 bg-white'>
                                 <h1 className='text-2xl text-blue-900 font-bold line-clamp-2 group-hover:underline'>{post.title}</h1>
-                                <p className='my-2 text-sm'>{post.createdAt}</p>
+                                <p className='my-2 text-sm'>{new Date(post.publishedAt).toLocaleDateString()}</p>
                             </div>
                         </Link>
                     ))) : null}

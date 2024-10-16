@@ -38,9 +38,10 @@ export type TBlog = {
     description: string
     createdAt: string,
     documentId: string
+    publishedAt: string
     cover?: {
         formats?: {
-            thumbnail?: {
+            large?: {
                 url: string;
             };
         };

@@ -10,15 +10,15 @@ export const menuList: MenuItem[] = [
         subItems: [
             {
                 label: 'Shares',
-                href: 'shares'
+                href: '/shares'
             },
             {
                 label: 'Bonds/Sukuk',
-                href: 'bonds-sukuk'
+                href: '/bonds-sukuk'
             },
             {
                 label: 'Commodities',
-                href:'commodities'
+                href:'/commodities'
             },
         ]
     },
@@ -27,15 +27,15 @@ export const menuList: MenuItem[] = [
         subItems: [
             {
                 label: 'Listed Companies',
-                href: 'listed-companies'
+                href: '/listed-companies'
             },
             {
                 label: 'Nominated Advisers',
-                href: 'nominated-advisers'
+                href: '/nominated-advisers'
             },
             {
                 label: 'Membership',
-                href: 'membership'
+                href: '/membership'
             },
         ],
     },
@@ -44,11 +44,11 @@ export const menuList: MenuItem[] = [
         subItems: [
             {
                 label: 'Market Snapshot',
-                href: 'market-snapshot'
+                href: '/market-snapshot'
             },
             {
                 label: 'Market Data',
-                href: 'market-data'
+                href: '/market-data'
             },
         ],
     },
@@ -57,24 +57,24 @@ export const menuList: MenuItem[] = [
         subItems: [
             {
                 label: 'News',
-                href: 'news'
+                href: '/news'
             },
             {
                 label: 'Publications',
                 subItems: [
                     {
                         label: 'Reports',
-                        href: 'reports'
+                        href: '/reports'
                     },
                     {
                         label: 'Links',
-                        href: 'links'
+                        href: '/links'
                     },
                 ],
             },
             {
                 label: 'Events',
-                href: 'events'
+                href: '/events'
             },
         ],
     },

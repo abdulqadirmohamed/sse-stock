@@ -2,34 +2,26 @@ import React from 'react'
 import Link  from 'next/link'
 import Image from 'next/image'
 import { ChevronRight } from 'lucide-react'
+import { TBlog } from '@/types/types'
 
-const page = () => {
-  const posts = [
-    {
-        id: 1,
-        featureImg: '/images/blog/img1.jpg',
-        title: 'Somali Stock Exchange together with UN Women Ring the Bell for Gender Equality ',
-        date: '13 March 2024'
-    },
-    {
-        id: 2,
-        featureImg: '/images/blog/img2.jpg',
-        title: 'Fresh Del Monte Announces Banana Partnership in Somalia',
-        date: '12 June 2024'
-    },
-    {
-        id: 3,
-        featureImg: '/images/blog/img3.jpg',
-        title: 'How FDIs can improve economic growth in Somalia',
-        date: '24 April 2024'
-    },
-    {
-        id: 4,
-        featureImg: '/images/blog/img3.jpg',
-        title: 'How FDIs can improve economic growth in Somalia',
-        date: '24 April 2024'
+const getAllPosts = async (): Promise<TBlog[] | null>  => {
+    try {
+        const res = await fetch('http://localhost:1337/api/blogs?populate=*', {
+            cache: 'no-store'
+        })
+        if (res.ok) {
+            const market = await res.json()
+            return market.data;
+        }
+    } catch (error) {
+            console.log(error)
     }
-]
+    return null
+}
+
+const page = async() => {
+    const posts = await getAllPosts()
+
   return (
     <div >
     <div className='container mx-auto my-4 p-10'>
@@ -37,11 +29,12 @@ const page = () => {
 
         {/* Posts */}
         <div className='grid md:grid-cols-3 gap-10 my-6'>
-            {posts.map((post) => (
-                <Link href={'#'} className='shadow group' key={post.id}>
-                    <div className='w-full h-64 relative'>
+          {posts && posts.length > 0 ? ( posts.map((post:TBlog) => (
+                <Link  href={`/news/${post.slug}`} className='shadow group' key={post.id}>
+                    <div className='w-full h-64 relative overflow-hidden'>
                         <Image
-                            src={post.featureImg}
+                        className='group-hover:scale-125 transition-all duration-300 ease-in-out'
+                           src={`http://localhost:1337${post.cover?.formats?.large?.url}`}
                             alt='post-image'
                             fill
                             style={{objectFit:"cover"}}
@@ -49,10 +42,11 @@ const page = () => {
                     </div>
                     <div className='p-4 bg-white'>
                         <h1 className='text-2xl text-blue-900 font-bold line-clamp-2 group-hover:underline'>{post.title}</h1>
-                        <p className='my-2 text-sm'>{post.date}</p>
+                        <p className="text-sm text-gray-500">{new Date(post.publishedAt).toLocaleDateString()}
+        </p>
                     </div>
                 </Link>
-            ))}
+             ))) : null}
         </div>
     </div>
 

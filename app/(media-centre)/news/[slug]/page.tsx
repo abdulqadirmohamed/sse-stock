@@ -2,14 +2,16 @@
 
 import React from 'react';
 import qs from 'qs';
-import ReactMarkdown from 'react-markdown'
-import rehypeRaw from 'rehype-raw'
+
+import { type BlocksContent } from "@strapi/blocks-react-renderer";
+import BlockRendererClient from './_component/BlockRendererClient';
+import Image from 'next/image';
 
 // Function to fetch a single blog post by slug
 async function fetchPost(slug: string) {
   const query = qs.stringify({
     filters: { slug: { $eq: slug } },
-    populate: '*', 
+    populate: '*',
   });
 
   const res = await fetch(`http://localhost:1337/api/blogs?${query}`);
@@ -24,30 +26,54 @@ async function fetchPost(slug: string) {
 
 // Page component to render the blog post
 const BlogPage = async ({ params }: { params: { slug: string } }) => {
-  try {
-    const blog = await fetchPost(params.slug);
+  const blog = await fetchPost(params.slug);
+  return (
+    <div className=''>
+      <div className="w-full h-[500px] relative">
+        {/* Background Image */}
+        <Image
+          src={`http://localhost:1337${blog.cover?.formats?.large?.url}`}
+          alt={blog.title}
+          className="object-cover object-center"
+          fill
+          priority
+          style={{ objectFit: 'cover' }}
+          quality={100}
+        />
 
-    return (
-      <div className="max-w-3xl mx-auto p-4">
-        <h1 className="text-3xl font-semibold mb-4">{blog.title}</h1>
-        <p className="text-sm text-gray-500">
-          Published on {new Date(blog.publishedAt).toLocaleDateString()}
-        </p>
-        {/* <div
-          className="prose mt-4"
-          dangerouslySetInnerHTML={{ __html: blog.description || 'No content available.' }}
-        ></div> */}
-         <div className="prose mt-4">
-          <ReactMarkdown rehypePlugins={[rehypeRaw]}>
-            {blog.description || 'No content available.'}
-          </ReactMarkdown>
+        {/* Text Overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white p-6">
+          <h1 className="md:w-1/2 mx-auto text-3xl md:text-5xl font-bold mb-4 text-center">
+            {blog.title}
+          </h1>
         </div>
       </div>
-    );
-  } catch (error) {
-    console.error(error);
-    return <div className="text-center mt-8">Blog not found</div>;
-  }
+      <div className="prose max-w-3xl mx-auto p-4"
+        dangerouslySetInnerHTML={{ __html: blog.description || 'No content available.' }}
+      ></div>
+    </div>
+  )
 };
 
 export default BlogPage;
+
+
+// try {
+//   const blog = await fetchPost(params.slug);
+
+//   return (
+//     <div className="max-w-3xl mx-auto p-4">
+//       <h1 className="text-3xl font-semibold mb-4">{blog.title}</h1>
+//       <p className="text-sm text-gray-500">
+//         Published on {new Date(blog.publishedAt).toLocaleDateString()}
+//       </p>
+//       <div
+//         className="prose mt-4"
+//         dangerouslySetInnerHTML={{ __html: blog.description || 'No content available.' }}
+//       ></div>
+//     </div>
+//   );
+// } catch (error) {
+//   console.error(error);
+//   return <div className="text-center mt-8">Blog not found</div>;
+// }
