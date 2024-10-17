@@ -15,7 +15,13 @@ const Header = () => {
 
     return (
         <>
-            <div className='bg-blue-900 w-full'>Survery 2024</div>
+            <div className='bg-blue-900 w-full py-2 text-white text-sm text-center md:block hidden'>
+                <div className='container mx-auto flex items-center justify-center gap-1'>
+                <p>Somali Stock Exchange - 2024 Financial Literacy Survey</p>
+                <Link href={'https://ae.visamiddleeast.com/content/dam/VCOM/regional/cemea/unitedarabemirates/documents/financial-literacy-survey-2024.pdf'} 
+                target='_blank' className='bg-white text-blue-900 px-2 py-[2px]'>Read more</Link>
+                </div>
+            </div>
             <div className="border-b py-6">
                 <div className="container mx-auto flex items-center justify-between md:px-0 px-10">
                     {/* Logo */}
