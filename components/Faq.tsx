@@ -29,7 +29,7 @@ const Faq = () => {
         <div className="container mx-auto p-10">
              <div className='flex gap-4 justify-between items-center'>
                 <div>
-                    <h1 className='w-[100px] text-2xl font-bold'>FAQs</h1>
+                    <h1 className='w-[400px] text-2xl font-bold'>Frequently Asked Questions</h1>
                 </div>
         
             <span className='w-full h-[2px] bg-blue-900 block my-2'></span>

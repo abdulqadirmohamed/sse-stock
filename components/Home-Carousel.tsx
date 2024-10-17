@@ -55,7 +55,7 @@ const HomeCarousel = () => {
                 <Image
                   src={slide.image}
                   alt={`Slide ${index + 1}`}
-                  className="object-cover object-center"
+                  className="object-cover object-top"
                   fill
                   priority
                   style={{ objectFit: 'cover' }}
