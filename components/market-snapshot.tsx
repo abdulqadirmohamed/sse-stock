@@ -2,9 +2,10 @@
 import { TMarket } from '@/types/types';
 import { ArrowDown, ArrowUp, ChartNoAxesCombined } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react'
 
-const gellMarketSnapshot = async (): Promise<TMarket[] | null>  => {
+const gellMarketSnapshot = async (): Promise<TMarket[] | null> => {
     try {
         const res = await fetch('http://localhost:1337/api/stocks?populate=*', {
             cache: 'no-store'
@@ -14,7 +15,7 @@ const gellMarketSnapshot = async (): Promise<TMarket[] | null>  => {
             return market.data;
         }
     } catch (error) {
-            console.log(error)
+        console.log(error)
     }
     return null
 }
@@ -42,17 +43,21 @@ const MarketSnapshot = async () => {
                         {marketData && marketData.length > 0 ? (
                             marketData.map((stock: TMarket) => (
                                 <tr key={stock.id} className="hover:bg-gray-100 border-b">
-                                    <td className="px-4 py-2 flex items-center border-r">
-                                        <Image
-                                            src={`http://localhost:1337${stock.logo?.formats?.thumbnail?.url}`}
-                                            alt={stock.security_name}
-                                            width={50}
-                                            height={50}
-                                            className="mr-2"
-                                        />
-                                        {stock.security_name}
+                                    <td>
+                                        <Link href={`listed-companies/${stock.slug}`} className="px-4 py-2 flex items-center border-r group">
+                                            <Image
+                                                src={`http://localhost:1337${stock.logo?.formats?.thumbnail?.url}`}
+                                                alt={stock.security_name}
+                                                width={50}
+                                                height={50}
+                                                className="mr-2"
+                                            />
+                                            <span className='group-hover:text-blue-700 group-hover:underline'>
+                                                {stock.security_name}
+                                            </span>
+                                        </Link>
                                     </td>
-                                    <td className="px-4 py-2 border-r">{stock.symbol}</td>
+                                    <td className="px-4 py-2 border-r uppercase">{stock.symbol}</td>
                                     <td className="px-4 py-2 border-r">{stock.market}</td>
                                     <td className="px-4 py-2 border-r">{stock.price}</td>
                                     <td className="px-4 py-2 border-r">{stock.open}</td>

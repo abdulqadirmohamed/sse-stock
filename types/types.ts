@@ -20,6 +20,7 @@ export type TMarket = {
     close: number;
     change: number;
     volume: number;
+    slug: string
     logo?: {
         formats?: {
             thumbnail?: {

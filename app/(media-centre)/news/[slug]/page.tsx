@@ -2,9 +2,6 @@
 
 import React from 'react';
 import qs from 'qs';
-
-import { type BlocksContent } from "@strapi/blocks-react-renderer";
-import BlockRendererClient from './_component/BlockRendererClient';
 import Image from 'next/image';
 
 // Function to fetch a single blog post by slug
@@ -57,23 +54,3 @@ const BlogPage = async ({ params }: { params: { slug: string } }) => {
 
 export default BlogPage;
 
-
-// try {
-//   const blog = await fetchPost(params.slug);
-
-//   return (
-//     <div className="max-w-3xl mx-auto p-4">
-//       <h1 className="text-3xl font-semibold mb-4">{blog.title}</h1>
-//       <p className="text-sm text-gray-500">
-//         Published on {new Date(blog.publishedAt).toLocaleDateString()}
-//       </p>
-//       <div
-//         className="prose mt-4"
-//         dangerouslySetInnerHTML={{ __html: blog.description || 'No content available.' }}
-//       ></div>
-//     </div>
-//   );
-// } catch (error) {
-//   console.error(error);
-//   return <div className="text-center mt-8">Blog not found</div>;
-// }
