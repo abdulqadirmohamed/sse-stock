@@ -8,7 +8,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import Link from 'next/link';
-// const images = ['/images/hero-img-1.jpg', '/images/hero-img-2.jpg', '/images/hero-img-3.jpg'];
 
 
 

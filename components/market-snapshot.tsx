@@ -68,10 +68,10 @@ const MarketSnapshot = async () => {
                                     </td>
                                     <td className="px-4 py-2 border-r">{stock.volume}</td>
                                     <td className="px-4 py-2 border-r flex justify-center items-center">
-                                        <button className="flex items-center border-r gap-2 bg-blue-900 hover:bg-blue-800 text-white  py-1 px-4 rounded capitalize">
+                                        <Link href="https://saamigado.com/" target='_blank' className="flex items-center border-r gap-2 bg-blue-900 hover:bg-blue-800 text-white  py-1 px-4 rounded capitalize">
                                             <ChartNoAxesCombined size={20} />
                                             trade
-                                        </button>
+                                        </Link>
                                     </td>
                                 </tr>
                             ))) : null}
