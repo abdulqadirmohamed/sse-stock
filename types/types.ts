@@ -21,6 +21,9 @@ export type TMarket = {
     change: number;
     volume: number;
     slug: string
+    isin: number
+    address: string
+    description: string
     logo?: {
         formats?: {
             thumbnail?: {
