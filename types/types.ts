@@ -48,3 +48,21 @@ export type TBlog = {
         };
     };
 }
+export type TEvent = {
+    id: number
+    title: string
+    slug: string
+    venue: string
+    date: Date
+    time: Date
+    description: string
+    createdAt: string,
+    publishedAt: string
+    cover?: {
+        formats?: {
+            large?: {
+                url: string;
+            };
+        };
+    };
+}
