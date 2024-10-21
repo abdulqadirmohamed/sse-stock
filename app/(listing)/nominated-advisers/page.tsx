@@ -5,7 +5,7 @@ import React from 'react'
 
 const getAll = async (): Promise<TNominated[] | null>  => {
   try {
-      const res = await fetch('http://localhost:1337/api/nominateds?populate=*', {
+      const res = await fetch(`${process.env.API_URL}/api/nominateds?populate=*`, {
           cache: 'no-store'
       })
       if (res.ok) {
@@ -37,7 +37,7 @@ const page = async () => {
             </div>
             <div className=" p-2">
               <Image
-                src={`http://localhost:1337${nominatedAdvisor.logo?.formats?.medium?.url}`}
+                src={`${process.env.API_URL}${nominatedAdvisor.logo?.formats?.medium?.url}`}
                 alt="logo"
                 width={100}
                 height={50}
@@ -97,7 +97,7 @@ const page = async () => {
                   </div>
                 </div>
                 <div className="w-auto p-2">
-                  <h2 className="text-sm font-medium text-coolGray-900">{nominatedAdvisor.country_offices}</h2>
+                  <h2 className="text-sm font-medium text-coolGray-900">{nominatedAdvisor.country_office}</h2>
                 </div>
               </div>
 

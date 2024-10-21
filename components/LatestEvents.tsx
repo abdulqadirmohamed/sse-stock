@@ -6,7 +6,7 @@ import { TEvent } from '@/types/types'
 
 const getEvents = async (): Promise<TEvent[] | null> => {
     try {
-        const res = await fetch('http://localhost:1337/api/events?populate=*', {
+        const res = await fetch(`${process.env.API_URL}/api/events?populate=*`, {
             cache: 'no-store'
         })
         if (res.ok) {
@@ -40,7 +40,7 @@ const LatestEvents = async () => {
                         // Handle missing image gracefully
                         const imageUrl =
                             event.cover?.formats?.small?.url
-                                ? `http://localhost:1337${event.cover.formats.small.url}`
+                                ? `${process.env.API_URL}${event.cover.formats.small.url}`
                                 : '/images/placeholder.jpg'; 
 
                         return (

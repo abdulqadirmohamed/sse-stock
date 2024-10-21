@@ -1,10 +1,11 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const gellMarketSnapshot = async () => {
 
   try {
-    const res = await fetch('http://localhost:1337/api/stocks?populate=*', {
+    const res = await fetch(`${process.env.API_URL}/api/market-snapshots?populate=*`, {
       cache: 'no-store'
     })
     if (res.ok) {
@@ -51,14 +52,14 @@ const page = async () => {
                     <tr key={stock.id} className="hover:bg-gray-100 border-b">
                       <td className="px-4 py-2 flex items-center border-r">
                         <Image
-                          src={`http://localhost:1337${stock.logo.formats.thumbnail.url}`}
+                          src={`${process.env.API_URL}${stock.logo.formats.thumbnail.url}`}
                           alt={stock.name}
                           width={100}
                           height={50}
 
                         />
                       </td>
-                      <td className="px-4 py-2 border-r capitalize">{stock.security_name}</td>
+                      <td className="px-4 py-2 border-r capitalize hover:underline hover:text-blue-900"><Link href={`listed-companies/${stock.slug}`}>{stock.security_name}</Link></td>
                       <td className="px-4 py-2 border-r uppercase">{stock.symbol}</td>
                       <td className="px-4 py-2 border-r">{stock.market}</td>
                     </tr>

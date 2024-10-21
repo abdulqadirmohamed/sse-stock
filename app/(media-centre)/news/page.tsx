@@ -6,7 +6,7 @@ import { TBlog } from '@/types/types'
 
 const getAllPosts = async (): Promise<TBlog[] | null>  => {
     try {
-        const res = await fetch('http://localhost:1337/api/blogs?populate=*', {
+        const res = await fetch(`${process.env.API_URL}/api/blogs?populate=*`, {
             cache: 'no-store'
         })
         if (res.ok) {
@@ -34,7 +34,7 @@ const page = async() => {
                     <div className='w-full h-64 relative overflow-hidden'>
                         <Image
                         className='group-hover:scale-125 transition-all duration-300 ease-in-out'
-                           src={`http://localhost:1337${post.cover?.formats?.large?.url}`}
+                           src={`${process.env.API_URL}${post.cover?.formats?.large?.url}`}
                             alt='post-image'
                             fill
                             style={{objectFit:"cover"}}

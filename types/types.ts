@@ -78,7 +78,7 @@ export type TNominated = {
     email: string
     contact_persons: string
     service_supported: string
-    country_offices: string
+    country_office: string
     language: string
     createdAt: string,
     publishedAt: string

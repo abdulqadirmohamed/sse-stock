@@ -7,7 +7,7 @@ import React from 'react'
 
 const gellMarketSnapshot = async (): Promise<TMarket[] | null> => {
     try {
-        const res = await fetch('http://localhost:1337/api/stocks?populate=*', {
+        const res = await fetch(`${process.env.API_URL}/api/market-snapshots?populate=*`, {
             cache: 'no-store'
         })
         if (res.ok) {
@@ -41,40 +41,48 @@ const MarketSnapshot = async () => {
                     </thead>
                     <tbody >
                         {marketData && marketData.length > 0 ? (
-                            marketData.map((stock: TMarket) => (
-                                <tr key={stock.id} className="hover:bg-gray-100 border-b">
-                                    <td>
-                                        <Link href={`listed-companies/${stock.slug}`} className="px-4 py-2 flex items-center border-r group">
-                                            <Image
-                                                src={`http://localhost:1337${stock.logo?.formats?.thumbnail?.url}`}
-                                                alt={stock.security_name}
-                                                width={50}
-                                                height={50}
-                                                className="mr-2"
-                                            />
-                                            <span className='group-hover:text-blue-700 group-hover:underline'>
-                                                {stock.security_name}
-                                            </span>
-                                        </Link>
-                                    </td>
-                                    <td className="px-4 py-2 border-r uppercase">{stock.symbol}</td>
-                                    <td className="px-4 py-2 border-r">{stock.market}</td>
-                                    <td className="px-4 py-2 border-r">{stock.price}</td>
-                                    <td className="px-4 py-2 border-r">{stock.open}</td>
-                                    <td className="px-4 py-2 border-r">{stock.close}</td>
-                                    <td className="px-4 py-2 border-r flex items-center gap-2 justify-center">
-                                        {stock.change}
-                                        {stock.change < 5 ? <ArrowDown size={15} className='text-red-600' /> : <ArrowUp size={15} className='text-green-600' />}
-                                    </td>
-                                    <td className="px-4 py-2 border-r">{stock.volume}</td>
-                                    <td className="px-4 py-2 border-r flex justify-center items-center">
-                                        <Link href="https://saamigado.com/" target='_blank' className="flex items-center border-r gap-2 bg-blue-900 hover:bg-blue-800 text-white  py-1 px-4 rounded capitalize">
-                                            <ChartNoAxesCombined size={20} />
-                                            trade
-                                        </Link>
-                                    </td>
-                                </tr>
-                            ))) : null}
+                            marketData.map((stock: TMarket) => {
+                                const imageUrl =
+                                stock.logo?.formats?.thumbnail?.url
+                                    ? `${process.env.API_URL}${stock.logo.formats.thumbnail.url}`
+                                    : '/images/placeholder.jpg'; 
+                                return (
+                                    <tr key={stock.id} className="hover:bg-gray-100 border-b">
+                                        <td>
+                                            <Link href={`listed-companies/${stock.slug}`} className="px-4 py-2 flex items-center border-r group">
+                                                <Image
+                                                    src={imageUrl}
+                                                    alt={stock.security_name}
+                                                    width={50}
+                                                    height={50}
+                                                    className="mr-2"
+                                                />
+                                                <span className='group-hover:text-blue-700 group-hover:underline'>
+                                                    {stock.security_name}
+                                                </span>
+                                            </Link>
+                                        </td>
+                                        <td className="px-4 py-2 border-r uppercase">{stock.symbol}</td>
+                                        <td className="px-4 py-2 border-r">{stock.market}</td>
+                                        <td className="px-4 py-2 border-r">{stock.price}</td>
+                                        <td className="px-4 py-2 border-r">{stock.open}</td>
+                                        <td className="px-4 py-2 border-r">{stock.close}</td>
+                                        <td className="px-4 py-2 border-r flex items-center gap-2 justify-center">
+                                            {stock.change}
+                                            {stock.change < 5 ? <ArrowDown size={15} className='text-red-600' /> : <ArrowUp size={15} className='text-green-600' />}
+                                        </td>
+                                        <td className="px-4 py-2 border-r">{stock.volume}</td>
+                                        <td className="px-4 py-2 border-r flex justify-center items-center">
+                                            <Link href="https://saamigado.com/" target='_blank' className="flex items-center border-r gap-2 bg-blue-900 hover:bg-blue-800 text-white  py-1 px-4 rounded capitalize">
+                                                <ChartNoAxesCombined size={20} />
+                                                trade
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                )
+                            }
+
+                            )) : null}
                     </tbody>
                 </table>
             </div>

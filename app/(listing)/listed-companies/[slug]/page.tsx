@@ -12,7 +12,7 @@ async function fetchPost(slug: string) {
         populate: '*',
     });
 
-    const res = await fetch(`http://localhost:1337/api/stocks?${query}`, {
+    const res = await fetch(`${process.env.API_URL}/api/market-snapshots?${query}`, {
         cache: 'no-store'
     });
     const postData = await res.json();
@@ -47,7 +47,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
             <div className='md:col-span-1'>
                 <div className='w-[50%] h-48 relative'>
                     <Image
-                        src={`http://localhost:1337${company.logo?.formats?.thumbnail?.url}`}
+                        src={`${process.env.API_URL}${company.logo?.formats?.thumbnail?.url}`}
                         alt='post-image'
                         fill
                         priority
