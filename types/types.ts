@@ -63,7 +63,28 @@ export type TEvent = {
     publishedAt: string
     cover?: {
         formats?: {
-            large?: {
+            small?: {
+                url: string;
+            };
+        };
+    };
+}
+export type TNominated = {
+    id: number
+    title: string
+    name: string
+    slug: string
+    tel: string
+    email: string
+    contact_persons: string
+    service_supported: string
+    country_offices: string
+    language: string
+    createdAt: string,
+    publishedAt: string
+    logo?: {
+        formats?: {
+            medium?: {
                 url: string;
             };
         };

@@ -67,7 +67,7 @@ const HomeCarousel = () => {
                     {slide.title}
                   </h1>
                   <p className="text-lg md:text-xl mb-6 text-center">
-                    {slide.description}
+                    {/* {slide.description} */}
                   </p>
                   <Link
                     href={slide.buttonLink}
