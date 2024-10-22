@@ -35,22 +35,43 @@ export type TMarket = {
 };
 
 
+// types.ts
 export type TBlog = {
-    id: number
-    title: string
-    slug: string
-    description: string
-    createdAt: string,
-    documentId: string
-    publishedAt: string
+    id: number;
+    title: string;
+    slug: string;
+    content: ContentItem[];
+    createdAt: string;
+    documentId: string;
+    publishedAt: string;
     cover?: {
-        formats?: {
-            large?: {
-                url: string;
-            };
+      formats?: {
+        large?: {
+          url: string;
         };
+      };
     };
-}
+  };
+  
+  export interface Child {
+    text: string;
+    type: string;
+    italic?: boolean; // Optional property
+  }
+  
+  export interface ListItem {
+    children: Child[];
+  }
+  
+  export interface ContentItem {
+    type: 'paragraph' | 'list'; // Specify the possible types
+    children: Child[] | ListItem[];
+  }
+  
+  export interface BlogData {
+    data: TBlog[];
+  }
+  
 export type TEvent = {
     id: number
     title: string

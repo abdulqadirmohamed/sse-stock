@@ -25,7 +25,7 @@ const LatestEvents = async () => {
                         // Handle missing image gracefully
                         const imageUrl =
                             event.cover?.formats?.small?.url
-                                ? `${process.env.API_URL}${event.cover.formats.small.url}`
+                                ? `${event.cover.formats.small.url}`
                                 : '/images/placeholder.jpg'; 
 
                         return (

@@ -1,4 +1,4 @@
-// app/blog/[slug]/page.tsx
+
 
 import React from 'react';
 import qs from 'qs';
@@ -11,10 +11,11 @@ async function fetchPost(slug: string) {
     populate: '*',
   });
 
-  const res = await fetch(`${process.env.API_URL}/api/blogs?${query}`,{
+  const res = await fetch(`${process.env.API_URL}/api/blogs?${query}`, {
     next: {
       revalidate: 60,
-    }
+    },
+  
   });
   const postData = await res.json();
 
@@ -49,9 +50,38 @@ const BlogPage = async ({ params }: { params: { slug: string } }) => {
           </h1>
         </div>
       </div>
-      <div className="prose max-w-3xl mx-auto p-4"
-        dangerouslySetInnerHTML={{ __html: blog.description || 'No content available.' }}
-      ></div>
+      <div className="prose max-w-3xl mx-auto p-4">
+         {/* eslint-disable-next-line  @typescript-eslint/no-explicit-any */}
+        {blog.content.map((item: any, index: number) => {
+          // Check the type of the item
+          if (item.type === 'paragraph') {
+            return (
+              <div key={index} className='my-5'>
+               {/* eslint-disable-next-line  @typescript-eslint/no-explicit-any */}
+                {item.children.map((child: any, childIndex: number) => (
+                  <p key={childIndex}>{child.text}</p> // Render paragraph text
+                ))}
+              </div>
+            );
+          } else if (item.type === 'list') {
+            return (
+              <ul key={index} className="list-disc ml-5 my-5">
+                 {/* eslint-disable-next-line  @typescript-eslint/no-explicit-any */}
+                {item.children.map((listItem: any, listIndex: number) => (
+                  <li key={listIndex}>
+                 {/* eslint-disable-next-line  @typescript-eslint/no-explicit-any */}
+                    {listItem.children.map((child: any) => child.text).join('')}
+                  </li>
+                ))}
+              </ul>
+            ); // Render bullet list
+          } else {
+            return null; // Handle other types or return null
+          }
+        })}
+      </div>
+
+
     </div>
   )
 };
