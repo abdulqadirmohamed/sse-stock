@@ -4,7 +4,8 @@ const nextConfig = {
         domains: [
             'sse.so',
             'localhost',
-            'res.cloudinary.com'
+            'res.cloudinary.com',
+            'sse-backend-v6ub.onrender.com'
         ]
     }
 };
