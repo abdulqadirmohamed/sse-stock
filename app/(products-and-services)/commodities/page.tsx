@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import styles from './about.module.css'
-import { ArrowRight, Check, CircleChevronRight } from 'lucide-react'
+import { ArrowRight, Check} from 'lucide-react'
 import Link from 'next/link'
 
 const page = () => {

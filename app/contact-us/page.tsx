@@ -1,4 +1,4 @@
-import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react'
+import {Mail, MapPin, Phone } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -59,7 +59,7 @@ const page = () => {
                     </div>
                     <div>
                       {contact.phone.map((tel)=>(
-                       <Link href={`tel:${tel}`}>
+                       <Link href={`tel:${tel}`} key={tel}>
                           <p className='hover:underline hover:text-blue-800'>{tel}</p>
                        </Link>
                       ))}

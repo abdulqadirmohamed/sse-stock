@@ -1,26 +1,12 @@
+import { fetchData } from '@/lib/fetchData';
 import { TBlog } from '@/types/types';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const getAllPosts = async (): Promise<TBlog[] | null>  => {
-    try {
-        const res = await fetch(`${process.env.API_URL}/api/blogs?populate=*`, {
-            cache: 'no-store'
-        })
-        if (res.ok) {
-            const market = await res.json()
-            return market.data;
-        }
-    } catch (error) {
-            console.log(error)
-    }
-    return null
-}
-
 const LatestInsights = async ()  => {
-    const posts = await getAllPosts()
+    const posts = await fetchData('/api/blogs');
 
     return (
         <div className="bg-gray-100">

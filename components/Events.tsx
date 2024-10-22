@@ -1,7 +1,6 @@
 import { ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { list } from 'postcss'
 import React from 'react'
 
 const Events = () => {

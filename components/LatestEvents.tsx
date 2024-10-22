@@ -3,25 +3,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { TEvent } from '@/types/types'
-
-const getEvents = async (): Promise<TEvent[] | null> => {
-    try {
-        const res = await fetch(`${process.env.API_URL}/api/events?populate=*`, {
-            cache: 'no-store'
-        })
-        if (res.ok) {
-            const market = await res.json()
-            return market.data;
-        }
-    } catch (error) {
-        console.log(error)
-    }
-    return null
-}
+import { fetchData } from '@/lib/fetchData'
 
 const LatestEvents = async () => {
-    const events = await getEvents()
-
+    const events = await fetchData('/api/events');
     
     return (
         <div className="container mx-auto my-4 px-6">

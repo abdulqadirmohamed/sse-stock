@@ -1,25 +1,12 @@
+import { fetchData } from '@/lib/fetchData'
+import { TMarket } from '@/types/types'
 import { ArrowDown, ArrowUp, ChartNoAxesCombined } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const gellMarketSnapshot = async () => {
-
-    try {
-        const res = await fetch(`${process.env.API_URL}/api/market-snapshots?populate=*`, {
-            cache: 'no-store'
-        })
-        if (res.ok) {
-            const market = await res.json()
-            return market.data;
-        }
-    } catch (error) {
-
-    }
-}
-
 const page = async () => {
-    const marketData = await gellMarketSnapshot()
+    const marketData = await fetchData('/api/market-snapshots');
     return (
         <div className="">
             <div className='md:h-[500px] h-[200px] relative -z-50 border-b-8 border-blue-900'>
@@ -54,12 +41,12 @@ const page = async () => {
                             </thead>
                             <tbody >
                                 {marketData && marketData.length > 0 ? (
-                                    marketData.map((stock: any) => (
+                                    marketData.map((stock: TMarket) => (
                                         <tr key={stock.id} className="hover:bg-gray-100 border-b">
                                             <td className="px-4 py-2 flex items-center border-r">
                                                 <Image
-                                                    src={`${process.env.API_URL}${stock.logo.formats.thumbnail.url}`}
-                                                    alt={stock.name}
+                                                    src={`${process.env.API_URL}${stock.logo?.formats?.thumbnail?.url}`}
+                                                    alt={stock.security_name}
                                                     width={50}
                                                     height={50}
                                                     className="mr-2"

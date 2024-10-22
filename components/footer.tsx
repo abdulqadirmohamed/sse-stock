@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone, PhoneCall } from 'lucide-react'
+import { Mail, MapPin, Phone } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import { BsTwitterX } from 'react-icons/bs'

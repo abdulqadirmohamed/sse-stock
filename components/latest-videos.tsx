@@ -3,8 +3,16 @@ import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
+// Define the video type for better type safety
+interface Video {
+  id: number;
+  title: string;
+  duration: string;
+  url: string;
+}
 
-const videos = [
+// Define the list of videos
+const videos: Video[] = [
   {
     id: 1,
     title: "Ring The Bell for Gender Equality",
@@ -31,26 +39,28 @@ const videos = [
   }
 ];
 
-const Latestideos = () => {
+const LatestVideos: React.FC = () => {
+  const [selectedVideo, setSelectedVideo] = useState<Video>(videos[0]);
 
-  const [selectedVideo, setSelectedVideo] = useState(videos[0]);
-
-  const handleVideoClick = (video: any) => {
-    // Add autoplay=1 to the video URL for autoplay functionality
-    const autoplayUrl = `${video?.url}?autoplay=1`;
+  // Handle video selection with autoplay added to URL
+  const handleVideoClick = (video: Video) => {
+    const autoplayUrl = `${video.url}?autoplay=1`;
     setSelectedVideo({ ...video, url: autoplayUrl });
   };
+
   return (
-    <div className='container mx-auto my-4 p-10'>
-      <div className='flex gap-4 justify-between items-center'>
+    <div className="container mx-auto my-4 p-10">
+      <div className="flex gap-4 justify-between items-center">
         <div>
-          <h1 className='w-full text-2xl font-bold'>Latest Videos </h1>
+          <h1 className="w-full text-2xl font-bold">Latest Videos</h1>
         </div>
         <div>
-          <Link href={'#'} className='bg-blue-900 px-4 py-2 rounded text-white flex items-center gap-2'>See more <ChevronRight /></Link>
+          <Link href="#" className="bg-blue-900 px-4 py-2 rounded text-white flex items-center gap-2">
+            See more <ChevronRight />
+          </Link>
         </div>
       </div>
-      <span className='w-full h-[2px] bg-blue-900 block my-2'></span>
+      <span className="w-full h-[2px] bg-blue-900 block my-2"></span>
 
       <div className="flex flex-col md:flex-row items-start justify-center my-2">
         {/* Video Player */}
@@ -67,28 +77,27 @@ const Latestideos = () => {
 
         {/* Playlist */}
         <div className="w-full md:w-1/4 md:ml-4 mt-4 md:mt-0">
-          <div className='flex justify-between items-center bg-blue-900 p-3 text-white'>
+          <div className="flex justify-between items-center bg-blue-900 p-3 text-white">
             <h3 className="text-lg font-semibold">Playlist</h3>
             <p>{videos.length} Videos</p>
           </div>
-          <ul className='mt-4'>
+          <ul className="mt-4">
             {videos.map((video) => (
               <li
                 key={video.id}
                 onClick={() => handleVideoClick(video)}
-                className={`cursor-pointer p-2 mb-2 flex justify-between items-center ${selectedVideo.title === video.title
-                  ? 'bg-blue-200'
-                  : 'bg-gray-100'
-                  }`}
+                className={`cursor-pointer p-2 mb-2 flex justify-between items-center ${
+                  selectedVideo.id === video.id ? 'bg-blue-200' : 'bg-gray-100'
+                }`}
               >
-                <div className='flex items-center gap-2 px-2'>
-                  <div>
-                    <iframe
-                    className='w-10 h-10 object-cover'
-                      src={video.url} 
-                      />
-                  </div>
-                  <span className='line-clamp-1'>{video.title}</span>
+                <div className="flex items-center gap-2 px-2">
+                  <iframe
+                    className="w-10 h-10"
+                    src={video.url}
+                    title={`Video ${video.id}`}
+                    frameBorder={0}
+                  />
+                  <span className="line-clamp-1">{video.title}</span>
                 </div>
                 <span>{video.duration}</span>
               </li>
@@ -97,7 +106,7 @@ const Latestideos = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Latestideos
+export default LatestVideos;

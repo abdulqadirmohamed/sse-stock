@@ -1,26 +1,13 @@
 // 'use client'
+import { fetchData } from '@/lib/fetchData';
 import { TMarket } from '@/types/types';
 import { ArrowDown, ArrowUp, ChartNoAxesCombined } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 
-const gellMarketSnapshot = async (): Promise<TMarket[] | null> => {
-    try {
-        const res = await fetch(`${process.env.API_URL}/api/market-snapshots?populate=*`, {
-            cache: 'no-store'
-        })
-        if (res.ok) {
-            const market = await res.json()
-            return market.data;
-        }
-    } catch (error) {
-        console.log(error)
-    }
-    return null
-}
 const MarketSnapshot = async () => {
-    const marketData = await gellMarketSnapshot()
+    const marketData = await fetchData('/api/market-snapshots');
     return (
         <div className="container mx-auto my-4 px-6">
             <h1 className='text-center my-6 text-xl font-bold'>Market Snapshot</h1>
