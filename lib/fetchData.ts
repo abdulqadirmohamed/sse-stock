@@ -1,7 +1,11 @@
 
 export const fetchData = async (endpoint: string) => {
   try {
-    const res = await fetch(`${process.env.API_URL}${endpoint}?populate=*`);
+    const res = await fetch(`${process.env.API_URL}${endpoint}?populate=*`, {
+      next: {
+        revalidate: 60,
+      }
+    });
     if (!res.ok) {
       throw new Error(`Failed to fetch from ${endpoint}. Status: ${res.status}`);
     }

@@ -28,7 +28,7 @@ const LatestInsights = async ()  => {
                             <div className='w-full h-64 relative overflow-hidden'>
                                 <Image
                                 className='group-hover:scale-125 transition-all duration-300 ease-in-out'
-                                    src={`${process.env.API_URL}${post.cover?.formats?.large?.url}`}
+                                    src={`${post.cover?.formats?.large?.url}`}
                                     alt='post-image'
                                     fill
                                     priority 

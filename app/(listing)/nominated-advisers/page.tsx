@@ -23,7 +23,7 @@ const page = async () => {
                 </div>
                 <div className=" p-2">
                   <Image
-                    src={`${process.env.API_URL}${nominatedAdvisor.logo?.formats?.medium?.url}`}
+                    src={`${nominatedAdvisor.logo?.formats?.medium?.url}`}
                     alt="logo"
                     width={100}
                     height={50}

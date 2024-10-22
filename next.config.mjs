@@ -3,7 +3,8 @@ const nextConfig = {
     images: {
         domains: [
             'sse.so',
-            'localhost'
+            'localhost',
+            'res.cloudinary.com'
         ]
     }
 };

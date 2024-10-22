@@ -13,12 +13,14 @@ async function fetchPost(slug: string) {
     });
 
     const res = await fetch(`${process.env.API_URL}/api/market-snapshots?${query}`, {
-        cache: 'no-store'
+        next: {
+            revalidate: 60,
+          }
     });
     const postData = await res.json();
 
     if (!postData || postData.data.length === 0) {
-        throw new Error('Blog not found');
+        throw new Error('company not found');
     }
 
     return postData.data[0];
@@ -47,7 +49,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
             <div className='md:col-span-1'>
                 <div className='w-[50%] h-48 relative'>
                     <Image
-                        src={`${process.env.API_URL}${company.logo?.formats?.thumbnail?.url}`}
+                        src={`${company.logo?.formats?.thumbnail?.url}`}
                         alt='post-image'
                         fill
                         priority

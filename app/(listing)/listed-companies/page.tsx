@@ -40,7 +40,7 @@ const page = async () => {
                     <tr key={stock.id} className="hover:bg-gray-100 border-b">
                       <td className="px-4 py-2 flex items-center border-r">
                         <Image
-                          src={`${process.env.API_URL}${stock.logo?.formats?.thumbnail?.url}`}
+                          src={`${stock.logo?.formats?.thumbnail?.url}`}
                           alt={stock.security_name}
                           width={100}
                           height={50}

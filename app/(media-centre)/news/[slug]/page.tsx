@@ -11,7 +11,11 @@ async function fetchPost(slug: string) {
     populate: '*',
   });
 
-  const res = await fetch(`${process.env.API_URL}/api/blogs?${query}`);
+  const res = await fetch(`${process.env.API_URL}/api/blogs?${query}`,{
+    next: {
+      revalidate: 60,
+    }
+  });
   const postData = await res.json();
 
   if (!postData || postData.data.length === 0) {
@@ -29,7 +33,7 @@ const BlogPage = async ({ params }: { params: { slug: string } }) => {
       <div className="w-full h-[500px] relative">
         {/* Background Image */}
         <Image
-          src={`${process.env.API_URL}${blog.cover?.formats?.large?.url}`}
+          src={`${blog.cover?.formats?.large?.url}`}
           alt={blog.title}
           className="object-cover object-center"
           fill

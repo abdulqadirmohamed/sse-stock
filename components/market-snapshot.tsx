@@ -26,17 +26,21 @@ const MarketSnapshot = async () => {
                             <th className="px-4 py-2 text-nowrap border-r bg-gray-100 text-center">TRADE</th>
                         </tr>
                     </thead>
-                    <tbody >
+                    <tbody>
                         {marketData && marketData.length > 0 ? (
-                            marketData.map((stock: TMarket) => {
-                                const imageUrl =
-                                stock.logo?.formats?.thumbnail?.url
-                                    ? `${process.env.API_URL}${stock.logo.formats.thumbnail.url}`
-                                    : '/images/placeholder.jpg'; 
+                            marketData.map((stock:TMarket) => {
+                                // Get the Cloudinary image URL or fallback to a placeholder
+                                const imageUrl = stock.logo?.formats?.thumbnail?.url
+                                    ? stock.logo.formats.thumbnail.url
+                                    : '/images/placeholder.jpg';
+
                                 return (
                                     <tr key={stock.id} className="hover:bg-gray-100 border-b">
                                         <td>
-                                            <Link href={`listed-companies/${stock.slug}`} className="px-4 py-2 flex items-center border-r group">
+                                            <Link
+                                                href={`listed-companies/${stock.slug}`}
+                                                className="px-4 py-2 flex items-center border-r group"
+                                            >
                                                 <Image
                                                     src={imageUrl}
                                                     alt={stock.security_name}
@@ -44,7 +48,7 @@ const MarketSnapshot = async () => {
                                                     height={50}
                                                     className="mr-2"
                                                 />
-                                                <span className='group-hover:text-blue-700 group-hover:underline'>
+                                                <span className="group-hover:text-blue-700 group-hover:underline">
                                                     {stock.security_name}
                                                 </span>
                                             </Link>
@@ -56,20 +60,33 @@ const MarketSnapshot = async () => {
                                         <td className="px-4 py-2 border-r">{stock.close}</td>
                                         <td className="px-4 py-2 border-r flex items-center gap-2 justify-center">
                                             {stock.change}
-                                            {stock.change < 5 ? <ArrowDown size={15} className='text-red-600' /> : <ArrowUp size={15} className='text-green-600' />}
+                                            {stock.change < 5 ? (
+                                                <ArrowDown size={15} className="text-red-600" />
+                                            ) : (
+                                                <ArrowUp size={15} className="text-green-600" />
+                                            )}
                                         </td>
                                         <td className="px-4 py-2 border-r">{stock.volume}</td>
                                         <td className="px-4 py-2 border-r flex justify-center items-center">
-                                            <Link href="https://saamigado.com/" target='_blank' className="flex items-center border-r gap-2 bg-blue-900 hover:bg-blue-800 text-white  py-1 px-4 rounded capitalize">
+                                            <Link
+                                                href="https://saamigado.com/"
+                                                target="_blank"
+                                                className="flex items-center border-r gap-2 bg-blue-900 hover:bg-blue-800 text-white py-1 px-4 rounded capitalize"
+                                            >
                                                 <ChartNoAxesCombined size={20} />
                                                 trade
                                             </Link>
                                         </td>
                                     </tr>
-                                )
-                            }
-
-                            )) : null}
+                                );
+                            })
+                        ) : (
+                            <tr>
+                                <td colSpan={9} className="text-center py-4">
+                                    No data available.
+                                </td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>
