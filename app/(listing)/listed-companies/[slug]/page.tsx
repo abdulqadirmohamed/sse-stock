@@ -3,6 +3,7 @@ import qs from 'qs';
 import Image from 'next/image';
 import { Charts } from '@/components/Charts';
 import Link from 'next/link';
+import { TMarket } from '@/types/types';
 
 
 // Function to fetch a single blog post by slug
@@ -31,8 +32,8 @@ export async function generateStaticParams() {
     const res = await fetch(`${process.env.API_URL}/api/market-snapshots`);
     const data = await res.json();
   
-    return data.data.map((post: any) => ({
-      slug: post.slug,
+    return data.data.map((company: TMarket) => ({
+      slug: company.slug,
     }));
   }
 

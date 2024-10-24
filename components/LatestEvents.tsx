@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { TEvent } from '@/types/types'
-import { fetchData, limitFetchData } from '@/lib/fetchData'
+import {limitFetchData } from '@/lib/fetchData'
 
 const LatestEvents = async () => {
     const events = await limitFetchData('/api/events', 2);

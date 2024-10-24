@@ -3,6 +3,7 @@
 import React from 'react';
 import qs from 'qs';
 import Image from 'next/image';
+import { TBlog } from '@/types/types';
 
 // Function to fetch a single blog post by slug
 async function fetchPost(slug: string) {
@@ -31,7 +32,7 @@ export async function generateStaticParams() {
   const res = await fetch(`${process.env.API_URL}/api/blogs`);
   const data = await res.json();
 
-  return data.data.map((post: any) => ({
+  return data.data.map((post: TBlog) => ({
     slug: post.slug,
   }));
 }
