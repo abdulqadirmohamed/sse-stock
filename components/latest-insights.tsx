@@ -1,4 +1,4 @@
-import { fetchData } from '@/lib/fetchData';
+import { limitFetchData } from '@/lib/fetchData';
 import { TBlog } from '@/types/types';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image'
@@ -6,7 +6,7 @@ import Link from 'next/link'
 import React from 'react'
 
 const LatestInsights = async ()  => {
-    const posts = await fetchData('/api/blogs');
+    const posts = await limitFetchData('/api/blogs', 3);
 
     return (
         <div className="bg-gray-100">

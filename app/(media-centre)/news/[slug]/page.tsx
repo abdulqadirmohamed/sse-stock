@@ -26,6 +26,40 @@ async function fetchPost(slug: string) {
   return postData.data[0];
 }
 
+// Generate static paths for each blog post
+export async function generateStaticParams() {
+  const res = await fetch(`${process.env.API_URL}/api/blogs`);
+  const data = await res.json();
+
+  return data.data.map((post: any) => ({
+    slug: post.slug,
+  }));
+}
+// Generate dynamic metadata for each blog post
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const post = await fetchPost(params.slug);
+
+  return {
+    title: post.title,
+    description: post.summary || post.content[0]?.children[0]?.text || 'Read this blog post.',
+    openGraph: {
+      title: post.title,
+      description: post.summary || 'Check out this amazing blog post!',
+      images: [
+        {
+          url: post.cover?.formats?.large?.url || '/default-cover.jpg',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.summary || 'Check out this amazing blog post!',
+      images: [post.cover?.formats?.large?.url || '/default-cover.jpg'],
+    },
+  };
+}
+
 // Page component to render the blog post
 const BlogPage = async ({ params }: { params: { slug: string } }) => {
   const blog = await fetchPost(params.slug);

@@ -3,10 +3,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { TEvent } from '@/types/types'
-import { fetchData } from '@/lib/fetchData'
+import { fetchData, limitFetchData } from '@/lib/fetchData'
 
 const LatestEvents = async () => {
-    const events = await fetchData('/api/events');
+    const events = await limitFetchData('/api/events', 2);
     
     return (
         <div className="container mx-auto my-4 px-6">
@@ -19,7 +19,7 @@ const LatestEvents = async () => {
                 </div>
             </div>
             <span className='w-full h-[2px] bg-blue-900 block my-2'></span>
-            <div className='md:grid grid-cols-2 gap-6 my-5'>
+            <div className='grid md:grid-cols-2 gap-6 my-5'>
             {events && events.length > 0 ? (
                     events.map((event: TEvent) => {
                         // Handle missing image gracefully

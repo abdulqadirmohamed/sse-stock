@@ -1,5 +1,5 @@
 // 'use client'
-import { fetchData } from '@/lib/fetchData';
+import { limitFetchData } from '@/lib/fetchData';
 import { TMarket } from '@/types/types';
 import { ArrowDown, ArrowUp, ChartNoAxesCombined } from 'lucide-react';
 import Image from 'next/image';
@@ -7,7 +7,7 @@ import Link from 'next/link';
 import React from 'react'
 
 const MarketSnapshot = async () => {
-    const marketData = await fetchData('/api/market-snapshots');
+    const marketData = await limitFetchData('/api/market-snapshots', 5);
     return (
         <div className="container mx-auto my-4 px-6">
             <h1 className='text-center my-6 text-xl font-bold'>Market Snapshot</h1>

@@ -26,6 +26,24 @@ async function fetchPost(slug: string) {
     return postData.data[0];
 }
 
+// Generate static paths for each blog post
+export async function generateStaticParams() {
+    const res = await fetch(`${process.env.API_URL}/api/market-snapshots`);
+    const data = await res.json();
+  
+    return data.data.map((post: any) => ({
+      slug: post.slug,
+    }));
+  }
+
+// Generate dynamic metadata for each blog post
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+    const company = await fetchPost(params.slug);
+  
+    return {
+      title: company.security_name,
+    };
+  }
 
 const page = async ({ params }: { params: { slug: string } }) => {
     const company = await fetchPost(params.slug);
