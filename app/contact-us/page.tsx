@@ -1,7 +1,9 @@
-import {Mail, MapPin, Phone } from 'lucide-react'
+import { Mail, MapPin, Phone } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import ContactForm from './_components/contact-form'
+
 
 const page = () => {
   const contacts = [
@@ -24,6 +26,7 @@ const page = () => {
       location: 'G Floor, Africa House, Jigjiga Yar Road Hargeisa, Somaliland'
     },
   ]
+
   return (
     <div className="">
       <div className='md:h-[500px] h-[200px] relative -z-50 border-b-8 border-blue-900'>
@@ -42,13 +45,7 @@ const page = () => {
         <div className="bg-white lg:shadow-xl lg:p-20 p-10 lg:col-span-3">
           <h1 className='text-2xl md:text-left sm:text-center font-bold mb-6 uppercase'>Contact Us</h1>
           <div className='md:text-[18px] text-gray-600'>
-            <form action="" className='w-full'>
-              <input type="text" placeholder='Name*' className='border px-4 py-2 w-full outline-0 my-2' required />
-              <input type="email" placeholder='Email*' className='border px-4 py-2 w-full outline-0 my-2' required />
-              <input type="tel" placeholder='Phone' className='border px-4 py-2 w-full outline-0 my-2' />
-              <textarea name="" id="" placeholder='Message' className='border px-4 py-2 w-full outline-0 my-3' required></textarea>
-              <button className='bg-blue-800 text-white px-6 py-2 rounded'>Send</button>
-            </form>
+            <ContactForm />
             <div className='my-10'>
               <h2 className='text-blue-800 font-semibold'>Somali Stock Exchange</h2>
               {contacts.map((contact) => (
@@ -58,10 +55,10 @@ const page = () => {
                       <Phone size={20} className='text-blue-800' />
                     </div>
                     <div>
-                      {contact.phone.map((tel)=>(
-                       <Link href={`tel:${tel}`} key={tel}>
+                      {contact.phone.map((tel) => (
+                        <Link href={`tel:${tel}`} key={tel}>
                           <p className='hover:underline hover:text-blue-800'>{tel}</p>
-                       </Link>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -84,7 +81,7 @@ const page = () => {
                   <hr />
                 </div>
               ))}
-             
+
             </div>
           </div>
         </div>
