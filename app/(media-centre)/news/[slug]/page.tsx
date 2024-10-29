@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     description: post.summary || post.content[0]?.children[0]?.text || 'Read this blog post.',
     openGraph: {
       title: post.title,
-      description: post.summary || 'Check out this amazing blog post!',
+      description: post.summary || `Don't miss this incredible blog post filled with great insights!`,
       images: [
         {
           url: post.cover?.formats?.large?.url || '/default-cover.jpg',
@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     twitter: {
       card: 'summary_large_image',
       title: post.title,
-      description: post.summary || 'Check out this amazing blog post!',
+      description: post.summary || `Don't miss this incredible blog post filled with great insights!`,
       images: [post.cover?.formats?.large?.url || '/default-cover.jpg'],
     },
   };

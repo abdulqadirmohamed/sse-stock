@@ -52,15 +52,15 @@ const LatestVideos: React.FC = () => {
     <div className="container mx-auto my-4 p-10">
       <div className="flex gap-4 justify-between items-center">
         <div>
-          <h1 className="w-full text-2xl font-bold">Latest Videos</h1>
+          <h1 className="w-full lg:text-3xl text-2xl text-[#174C81] font-bold font-Arial">Latest Videos</h1>
         </div>
         <div>
-          <Link href="#" className="bg-blue-900 px-4 py-2 rounded text-white flex items-center gap-2">
+          <Link href="#" className="bg-[#174C81] hover:bg-[#1b2f44e1] px-4 py-2 rounded text-white flex items-center gap-2">
             See more <ChevronRight />
           </Link>
         </div>
       </div>
-      <span className="w-full h-[2px] bg-blue-900 block my-2"></span>
+      <span className="w-full h-[2px] bg-[#174C81] block my-2"></span>
 
       <div className="flex flex-col md:flex-row items-start justify-center my-2">
         {/* Video Player */}
@@ -77,7 +77,7 @@ const LatestVideos: React.FC = () => {
 
         {/* Playlist */}
         <div className="w-full md:w-1/4 md:ml-4 mt-4 md:mt-0">
-          <div className="flex justify-between items-center bg-blue-900 p-3 text-white">
+          <div className="flex justify-between items-center bg-[#174C81] p-3 text-white">
             <h3 className="text-lg font-semibold">Playlist</h3>
             <p>{videos.length} Videos</p>
           </div>

@@ -25,8 +25,8 @@ const page = async () => {
                                     quality={100} />
                             </div>
                             <div className='p-4 bg-white'>
-                                <h1 className='text-2xl text-blue-900 font-bold line-clamp-2 group-hover:underline'>{post.title}</h1>
-                                <p className="text-sm text-gray-500">{new Date(post.publishedAt).toLocaleDateString()}
+                                <h1 className='text-2xl text-[#174C81] font-bold line-clamp-2 group-hover:underline'>{post.title}</h1>
+                                <p className="text-sm text-gray-500 mt-3">{new Date(post.publishedAt).toLocaleDateString()}
                                 </p>
                             </div>
                         </Link>

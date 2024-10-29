@@ -30,25 +30,25 @@ const page = () => {
             <h3 className='font-bold text-gray-700 mt-5'>Livestock figures</h3>
             <ul className='my-3 ml-3'>
               <li className='flex items-center gap-2'>
-                <span className='bg-blue-800 w-4 h-4 text-white p-[2px] rounded-full flex items-center justify-center'>
+                <span className='bg-[#174C81] w-4 h-4 text-white p-[2px] rounded-full flex items-center justify-center'>
                   <Check size={20} />
                 </span>
                 14.6 million sheep
               </li>
               <li className='flex items-center gap-2'>
-                <span className='bg-blue-800 w-4 h-4 text-white p-[2px] rounded-full flex items-center justify-center'>
+                <span className='bg-[#174C81] w-4 h-4 text-white p-[2px] rounded-full flex items-center justify-center'>
                   <Check size={20} />
                 </span>
                 14 million goats
               </li>
               <li className='flex items-center gap-2'>
-                <span className='bg-blue-800 w-4 h-4 text-white p-[2px] rounded-full flex items-center justify-center'>
+                <span className='bg-[#174C81] w-4 h-4 text-white p-[2px] rounded-full flex items-center justify-center'>
                   <Check size={20} />
                 </span>
                 7.5 million camels (the largest population of camels in the world!)
               </li>
               <li className='flex items-center gap-2'>
-                <span className='bg-blue-800 w-4 h-4 text-white p-[2px] rounded-full flex items-center justify-center'>
+                <span className='bg-[#174C81] w-4 h-4 text-white p-[2px] rounded-full flex items-center justify-center'>
                   <Check size={20} />
                 </span>
                 5.6 million cattle
@@ -58,7 +58,7 @@ const page = () => {
             <p className="my-5">
             The livestock market is popular with breeders, commodity traders, commercial slaughter houses, professional and private investors. The commodity section is the ideal marketplace for any interested party to invest and recoup their proceeds in this highly lucrative opportunity.
             </p>
-            <Link href={"contact-us"} className='bg-blue-900 px-3 py-2 rounded-md text-white flex items-center justify-center hover:animate-pulse'>Contact us to find out more about livestock <ArrowRight className='ml-3' /></Link>
+            <Link href={"contact-us"} className='bg-[#174C81] px-3 py-2 rounded-md text-white flex items-center justify-center hover:animate-pulse'>Contact us to find out more about livestock <ArrowRight className='ml-3' /></Link>
           </div>
         </div>
       </div>

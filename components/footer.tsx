@@ -8,7 +8,7 @@ import { RiWhatsappFill } from 'react-icons/ri'
 const Footer = () => {
     return (
         <footer className='mt-10'>
-            <div className='bg-blue-900 text-blue-50 min-h-[60px] mt-auto'>
+            <div className='bg-[#174C81] text-blue-50 min-h-[60px] mt-auto'>
                 <div className="container mx-auto md:px-0 px-12 md:grid grid-cols-3 gap-12 py-10">
                     <div>
                         <Link href={'about-us'} className='text-xl font-bold hover:underline'>Somali Stock Exchange</Link>
@@ -19,13 +19,13 @@ const Footer = () => {
                         <div className='flex items-center gap-4 my-3'>
                             <Phone />
                             <div>
-                                <p>+252 618870155</p>
-                                <p>+252 907127973</p>
+                                <Link href={'tel:+252618870155'} className='hover:underline'>+252 618870155</Link> <br />
+                                <Link href={'tel:+252907127973'} className='hover:underline'>+252 907127973</Link>
                             </div>
                         </div>
                         <div className='flex items-center gap-4 my-3'>
                             <Mail />
-                            <p>info@sse.so</p>
+                            <Link href={'mailto:info@sse.so'} className='hover:underline'>info@sse.so</Link>
                         </div>
                         <div className='flex items-center gap-4 my-3'>
                             <MapPin size={30}/>
@@ -49,8 +49,8 @@ const Footer = () => {
                 </div>
                 <hr />
                 <div className="flex justify-center items-center gap-3 text-blue-100 py-4">
-                <Link href={'#'}><FaFacebookF /></Link>
-                <Link href={'#'}><BsTwitterX /></Link>
+                <Link href={'https://www.facebook.com/somalistockexchange/'}><FaFacebookF /></Link>
+                <Link href={'https://www.youtube.com/@somalistockexchange1383'}><BsTwitterX /></Link>
                 <Link href={'#'}><FaLinkedin /></Link>
                 <Link href={'#'}><FaYoutube /></Link>
                 <Link href={'#'}><RiWhatsappFill /></Link>

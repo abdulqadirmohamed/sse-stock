@@ -43,8 +43,24 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   
     return {
       title: company.security_name,
+      openGraph: {
+        title: company.title,
+        description: company.description,
+        images: [
+          {
+            url: company.cover?.formats?.large?.url || '/default-cover.jpg',
+          },
+        ],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: company.title,
+        description: company.description,
+        images: [company.cover?.formats?.large?.url || '/default-cover.jpg'],
+      },
     };
-  }
+    };
+  
 
 const page = async ({ params }: { params: { slug: string } }) => {
     const company = await fetchPost(params.slug);

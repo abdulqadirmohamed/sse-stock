@@ -67,7 +67,7 @@ const ContactForm: React.FC = () => {
                 name="message"
                 value={formData.message}
                 onChange={handleChange} placeholder='Message' className='border px-4 py-2 w-full outline-0 my-3' required></textarea>
-            <button type="submit" className='bg-blue-800 text-white px-6 py-2 rounded'>Send</button>
+            <button type="submit" className='bg-[#174C81] text-white px-6 py-2 rounded'>Send</button>
         </form>
     )
 }

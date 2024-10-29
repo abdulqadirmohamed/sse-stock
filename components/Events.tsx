@@ -18,16 +18,16 @@ const Events = () => {
         <div className='container mx-auto my-4 p-10'>
             <div className='flex gap-4 justify-between items-center'>
                 <div>
-                    <h1 className='w-full text-2xl font-bold'>Events</h1>
+                    <h1 className='w-full lg:text-3xl text-2xl text-[#174C81] font-bold font-Arial'>Events</h1>
                 </div>
                 <div>
-                    <Link href={'#'} className='bg-blue-900 px-4 py-2 rounded text-white flex items-center gap-2'>See more <ChevronRight /></Link>
+                    <Link href={'#'} className='bg-[#174C81] px-4 py-2 rounded text-white flex items-center gap-2'>See more <ChevronRight /></Link>
                 </div>
             </div>
             <span className='w-full h-[2px] bg-blue-900 block my-2'></span>
 
             {/*  */}
-            <div className='grid md:grid-cols-2 gap-6 my-5'>
+            <div className='grid lg:grid-cols-2 gap-6 my-5'>
                 {/* image */}
                 <div className=''>
                     <Image
@@ -40,7 +40,7 @@ const Events = () => {
                 </div>
                 {/* title */}
                 <div>
-                    <h1 className='text-2xl font-bold text-blue-900'>Business Etiquette & Professionalism</h1>
+                    <h1 className='text-2xl font-bold text-[#174C81]'>Business Etiquette & Professionalism</h1>
                     <ul className='my-4'>
                         {eventList.map((list) => (
                             <li className='list-disc my-2 ml-3 text-sm' key={list.id}>{list.title}</li>

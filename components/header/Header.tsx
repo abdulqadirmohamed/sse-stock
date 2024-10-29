@@ -42,12 +42,12 @@ const Header = () => {
                     <MobileNav menuList={menuList} />
 
                     {/* Social Media Link */}
-                    <div className="hidden lg:flex items-center gap-3 text-blue-900">
-                        <Link href={'https://www.facebook.com/somalistockexchange'} target='_blank'><FaFacebookF /></Link>
+                    <div className="hidden lg:flex items-center gap-3 text-[#174C81] ">
+                        <Link className='hover:text-[#1b2f44e1]' href={'https://www.facebook.com/somalistockexchange'} target='_blank'><FaFacebookF /></Link>
                         <Link href={'https://x.com/SomaliStockExch'} target='_blank'><BsTwitterX /></Link>
-                        <Link href={'#'}><FaLinkedin /></Link>
-                        <Link href={'https://www.youtube.com/@somalistockexchange1383'} target='_blank'><FaYoutube /></Link>
-                        <Link href={'#'}><RiWhatsappFill /></Link>
+                        <Link className='hover:text-[#1b2f44e1]' href={'#'}><FaLinkedin /></Link>
+                        <Link className='hover:text-[#1b2f44e1]' href={'https://www.youtube.com/@somalistockexchange1383'} target='_blank'><FaYoutube /></Link>
+                        <Link className='hover:text-[#1b2f44e1]' href={'#'}><RiWhatsappFill /></Link>
                     </div>
                 </div>
             </div>

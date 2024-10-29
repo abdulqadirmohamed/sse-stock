@@ -1,21 +1,13 @@
+import { fetchData } from '@/lib/fetchData'
+import { TEvent } from '@/types/types'
 import { CalendarRange, MapPin, Timer } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const page = () => {
-    const events = [
-        {
-            id:1,
-            image: '/images/event-1.jpg',
-            title: 'Exchanges and climate action: financing the net zero transition',
-        },
-        {
-            id:2,
-            image: '/images/event-2.jpg',
-            title: 'Empowering Innovation for Sustainable Development in Somalia',
-        }
-    ];
+const page = async () => {
+    const events = await fetchData('/api/events');
+
     return (
         <div className="">
             <div className='md:h-[500px] h-[200px] relative -z-50 border-b-8 border-blue-900'>
@@ -34,12 +26,12 @@ const page = () => {
                 <div className="bg-white lg:shadow-xl lg:p-20 p-10 lg:col-span-3">
                     <h1 className='text-2xl md:text-left sm:text-center font-bold mb-6 uppercase'>Events</h1>
                     <div className=''>
-                        {events.map((event) => (
+                    {events && events.length > 0 ? (events.map((event: TEvent) => (
                             <div className='flex gap-4 items-center group my-10' key={event.id}>
                                 <div className='w-80 h-64 relative overflow-hidden'>
                                     <Image
                                         className='group-hover:scale-125 group-hover:rotate-15 transition-all duration-300 ease-in-out'
-                                        src={event.image}
+                                        src={`${event.cover?.formats?.small?.url}`}
                                         alt='post-image'
                                         fill
                                         priority
@@ -52,22 +44,22 @@ const page = () => {
                                     </Link>
                                     <div className='mt-6'>
                                         <div className='flex items-center gap-3'>
-                                            <CalendarRange className='text-blue-800 my-2' />
+                                            <CalendarRange className='text-[#174C81] my-2' />
                                             <p>14 November, 2024</p>
                                         </div>
 
                                         <div className='flex items-center gap-3 my-2'>
-                                            <Timer className='text-blue-800' />
+                                            <Timer className='text-[#174C81]' />
                                             <p>12:46:32 PM</p>
                                         </div>
                                         <div className='flex items-center gap-3 my-2'>
-                                            <MapPin className='text-blue-800' />
+                                            <MapPin className='text-[#174C81]' />
                                             <p>Garowe Punland</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        ))}
+                       ))) : null}
                     </div>
                 </div>
             </div>

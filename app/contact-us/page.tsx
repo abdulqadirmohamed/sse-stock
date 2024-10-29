@@ -29,7 +29,7 @@ const page = () => {
 
   return (
     <div className="">
-      <div className='md:h-[500px] h-[200px] relative -z-50 border-b-8 border-blue-900'>
+      <div className='md:h-[500px] h-[200px] relative -z-50 border-b-8 border-[#174C81]'>
         <Image
           src={'/images/hero-img-1.jpg'}
           alt='about-image'
@@ -47,32 +47,32 @@ const page = () => {
           <div className='md:text-[18px] text-gray-600'>
             <ContactForm />
             <div className='my-10'>
-              <h2 className='text-blue-800 font-semibold'>Somali Stock Exchange</h2>
+              <h2 className='text-[#174C81] font-semibold'>Somali Stock Exchange</h2>
               {contacts.map((contact) => (
                 <div className='mt-4' key={contact.id}>
                   <div className='flex items-center gap-2 my-2'>
                     <div>
-                      <Phone size={20} className='text-blue-800' />
+                      <Phone size={20} className='text-[#174C81]' />
                     </div>
                     <div>
                       {contact.phone.map((tel) => (
                         <Link href={`tel:${tel}`} key={tel}>
-                          <p className='hover:underline hover:text-blue-800'>{tel}</p>
+                          <p className='hover:underline hover:text-[#1b2f44e1]'>{tel}</p>
                         </Link>
                       ))}
                     </div>
                   </div>
                   <div className='flex items-center gap-2 my-2'>
                     <div>
-                      <Mail size={20} className='text-blue-800' />
+                      <Mail size={20} className='text-[#174C81]' />
                     </div>
                     <div>
-                      <Link href={`mailto:${contact.email}`} className='hover:underline hover:text-blue-800'>{contact.email}</Link>
+                      <Link href={`mailto:${contact.email}`} className='hover:underline hover:text-[#1b2f44e1]'>{contact.email}</Link>
                     </div>
                   </div>
                   <div className='flex items-center gap-2 my-2 mb-4'>
                     <div>
-                      <MapPin size={20} className='text-blue-800' />
+                      <MapPin size={20} className='text-[#174C81]' />
                     </div>
                     <div>
                       <p>{contact.location}</p>

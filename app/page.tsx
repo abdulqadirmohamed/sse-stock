@@ -7,11 +7,13 @@ import Latestideos from "@/components/latest-videos";
 import LatestEvents from "@/components/LatestEvents";
 import MarketSnapshot from "@/components/market-snapshot";
 import MembershipOfSSE from "@/components/Membership-of-SSE";
+import { limitFetchData } from "@/lib/fetchData";
 
-export default function Home() {
+export default async function Home() {
+  const slides = await limitFetchData('/api/slides', 3);
   return (
     <main>
-        <HomeCarousel />
+        <HomeCarousel slides={slides} />
         <MarketSnapshot />
         <LatestInsights />
         <Events />
