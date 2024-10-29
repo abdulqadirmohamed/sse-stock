@@ -40,7 +40,7 @@ const Events = () => {
                 </div>
                 {/* title */}
                 <div>
-                    <h1 className='text-2xl font-bold text-[#174C81]'>Business Etiquette & Professionalism</h1>
+                    <h1 className='md:text-2xl text-xl font-bold text-[#174C81]'>Business Etiquette & Professionalism</h1>
                     <ul className='my-4'>
                         {eventList.map((list) => (
                             <li className='list-disc my-2 ml-3 text-sm' key={list.id}>{list.title}</li>

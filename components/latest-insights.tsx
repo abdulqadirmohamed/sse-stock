@@ -36,7 +36,7 @@ const LatestInsights = async ()  => {
                                     quality={100} />
                             </div>
                             <div className='p-4 bg-white'>
-                                <h1 className='text-2xl text-[#174C81] font-bold line-clamp-2 group-hover:underline'>{post.title}</h1>
+                                <h1 className='md:text-2xl text-xl text-[#174C81] font-bold line-clamp-2 group-hover:underline'>{post.title}</h1>
                                 <p className='my-2 text-sm'>{new Date(post.publishedAt).toLocaleDateString()}</p>
                             </div>
                         </Link>

@@ -1,5 +1,6 @@
 'use client'
 import React, { ChangeEvent, useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast';
 
 // Define a type for the form data
 interface FormData {
@@ -15,6 +16,7 @@ const ContactForm: React.FC = () => {
         phone: '',
         message: ''
     });
+    const [loading, setLoading] = useState(false); // Loading state
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -23,6 +25,7 @@ const ContactForm: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setLoading(true);
 
         try {
             const response = await fetch('/api/contact', {
@@ -39,14 +42,23 @@ const ContactForm: React.FC = () => {
             }
 
             const result = await response.json();
-            alert(result.message);
+            toast.success(result.message || 'Email sent successfully!');
+            // Reset form fields after successful submission
+            setFormData({
+                name: '',
+                email: '',
+                phone: '',
+                message: ''
+            });
         } catch (error) {
-            console.error('Error:', error);
-            //   alert(`Error: ${error.message}`);
+            console.log(error)
+        } finally {
+            setLoading(false);
         }
     };
     return (
         <form onSubmit={handleSubmit} className='w-full'>
+            <Toaster position="top-center" reverseOrder={false} />
             <input type="text"
                 name="name"
                 value={formData.name}
@@ -67,7 +79,9 @@ const ContactForm: React.FC = () => {
                 name="message"
                 value={formData.message}
                 onChange={handleChange} placeholder='Message' className='border px-4 py-2 w-full outline-0 my-3' required></textarea>
-            <button type="submit" className='bg-[#174C81] text-white px-6 py-2 rounded'>Send</button>
+            <button type="submit" className='bg-[#174C81] text-white px-6 py-2 rounded' disabled={loading}>
+                {loading ? 'Sending...' : 'Send'}
+            </button>
         </form>
     )
 }
