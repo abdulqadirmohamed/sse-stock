@@ -13,10 +13,10 @@ const MembershipOfSSE = () => {
         <div className='container mx-auto my-4 p-10'>
             <div className='flex gap-4 justify-between items-center'>
                 <div>
-                    <h1 className='w-[300px] lg:text-3xl text-2xl text-[#174C81] font-bold font-Arial'>Membership of SSE </h1>
+                    <h1 className='md:w-[300px] w-full lg:text-3xl text-2xl text-[#174C81] font-bold font-Arial'>Membership of SSE </h1>
                 </div>
         
-            <span className='w-full h-[2px] bg-blue-900 block my-2'></span>
+            <span className='w-full h-[2px] bg-blue-900 md:block hidden my-2'></span>
             </div>
 
             <div className='grid md:grid-cols-3 gap-6 my-5'>

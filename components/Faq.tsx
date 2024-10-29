@@ -29,10 +29,10 @@ const Faq = () => {
         <div className="container mx-auto p-10">
              <div className='flex gap-4 justify-between items-center'>
                 <div>
-                    <h1 className='w-[600px] lg:text-3xl text-2xl text-[#174C81] font-bold font-Arial'>Frequently Asked Questions</h1>
+                    <h1 className='md:w-[600px] w-full lg:text-3xl text-2xl text-[#174C81] font-bold font-Arial'>Frequently Asked Questions</h1>
                 </div>
         
-            <span className='w-full h-[2px] bg-[#174C81] block my-2'></span>
+            <span className='w-full h-[2px] bg-[#174C81] md:block hidden my-2'></span>
             </div>
             <Accordion type="single" collapsible className='text-left'>
                 {faqs.map((faq)=>(
