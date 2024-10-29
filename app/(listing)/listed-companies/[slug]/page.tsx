@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         description: company.description,
         images: [
           {
-            url: company.cover?.formats?.large?.url || '/default-cover.jpg',
+            url: company.cover?.formats?.thumbnail?.url || '/default-cover.jpg',
           },
         ],
       },
@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         card: 'summary_large_image',
         title: company.title,
         description: company.description,
-        images: [company.cover?.formats?.large?.url || '/default-cover.jpg'],
+        images: [company.cover?.formats?.thumbnail?.url || '/default-cover.jpg'],
       },
     };
     };
