@@ -7,7 +7,7 @@ import Link from 'next/link';
 import React from 'react'
 
 const MarketSnapshot = async () => {
-    const marketData = await limitFetchData('/api/market-snapshots', 5);
+    const marketData = await limitFetchData('/api/market-snapshots', 15);
     return (
         <div className="container mx-auto my-4 px-6">
             <h1 className='text-center my-6 lg:text-3xl text-2xl text-[#174C81] font-bold font-Arial'>Market Snapshot</h1>
